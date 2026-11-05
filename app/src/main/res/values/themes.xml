@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TODO: criar também o tema de acessibilidade (RF34): fonte maior e alto contraste -->
+    <style name="Theme.RemedioCerto" parent="Theme.Material3.DayNight.NoActionBar" />
+</resources>

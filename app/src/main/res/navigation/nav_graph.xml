@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Grafo único. A MainActivity troca o destino inicial conforme o perfil:
+     idoso -> hojeFragment, familiar -> acompanhamentoFragment. -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/hojeFragment">
+
+    <fragment
+        android:id="@+id/hojeFragment"
+        android:name="com.example.remediocerto.ui.hoje.HojeFragment"
+        android:label="@string/nav_hoje"
+        tools:layout="@layout/fragment_hoje" />
+
+    <fragment
+        android:id="@+id/medicamentosFragment"
+        android:name="com.example.remediocerto.ui.medicamentos.MedicamentosFragment"
+        android:label="@string/nav_medicamentos"
+        tools:layout="@layout/fragment_medicamentos">
+        <action
+            android:id="@+id/action_medicamentos_to_cadastro"
+            app:destination="@id/cadastroMedicamentoFragment" />
+        <action
+            android:id="@+id/action_medicamentos_to_detalhes"
+            app:destination="@id/detalhesMedicamentoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cadastroMedicamentoFragment"
+        android:name="com.example.remediocerto.ui.medicamentos.CadastroMedicamentoFragment"
+        android:label="@string/cadastro_titulo"
+        tools:layout="@layout/fragment_cadastro_medicamento" />
+
+    <fragment
+        android:id="@+id/detalhesMedicamentoFragment"
+        android:name="com.example.remediocerto.ui.medicamentos.DetalhesMedicamentoFragment"
+        android:label="@string/detalhes_titulo"
+        tools:layout="@layout/fragment_detalhes_medicamento">
+        <action
+            android:id="@+id/action_detalhes_to_cadastro"
+            app:destination="@id/cadastroMedicamentoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historicoFragment"
+        android:name="com.example.remediocerto.ui.historico.HistoricoFragment"
+        android:label="@string/nav_historico"
+        tools:layout="@layout/fragment_historico" />
+
+    <fragment
+        android:id="@+id/configuracoesFragment"
+        android:name="com.example.remediocerto.ui.configuracoes.ConfiguracoesFragment"
+        android:label="@string/nav_configuracoes"
+        tools:layout="@layout/fragment_configuracoes">
+        <action
+            android:id="@+id/action_configuracoes_to_vinculo"
+            app:destination="@id/vinculoFragment" />
+        <action
+            android:id="@+id/action_configuracoes_to_farmacias"
+            app:destination="@id/farmaciasFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/vinculoFragment"
+        android:name="com.example.remediocerto.ui.vinculo.VinculoFragment"
+        android:label="@string/nav_vinculo"
+        tools:layout="@layout/fragment_vinculo" />
+
+    <fragment
+        android:id="@+id/acompanhamentoFragment"
+        android:name="com.example.remediocerto.ui.acompanhamento.AcompanhamentoFragment"
+        android:label="@string/nav_acompanhamento"
+        tools:layout="@layout/fragment_acompanhamento" />
+
+    <fragment
+        android:id="@+id/farmaciasFragment"
+        android:name="com.example.remediocerto.ui.farmacias.FarmaciasFragment"
+        android:label="@string/nav_farmacias"
+        tools:layout="@layout/fragment_farmacias" />
+</navigation>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/entrada_titulo"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem">
+
+            <TextView
+                android:id="@+id/tvAviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margem"
+                android:text="@string/aviso_medico"
+                android:textSize="@dimen/texto_corpo" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <CheckBox
+            android:id="@+id/checkAviso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:minHeight="@dimen/altura_botao"
+            android:text="@string/entrada_aceite"
+            android:textSize="@dimen/texto_corpo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIdoso"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/altura_botao"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/entrada_btn_idoso"
+            android:textSize="@dimen/texto_corpo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFamiliar"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/altura_botao"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/entrada_btn_familiar"
+            android:textSize="@dimen/texto_corpo" />
+
+        <TextView
+            android:id="@+id/tvNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/entrada_nota" />
+    </LinearLayout>
+</ScrollView>

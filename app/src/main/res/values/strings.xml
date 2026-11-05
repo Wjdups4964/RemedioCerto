@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RemédioCerto</string>
+
+    <!-- Navegação -->
+    <string name="nav_hoje">Hoje</string>
+    <string name="nav_medicamentos">Medicamentos</string>
+    <string name="nav_historico">Histórico</string>
+    <string name="nav_configuracoes">Configurações</string>
+    <string name="nav_acompanhamento">Acompanhamento</string>
+    <string name="nav_vinculo">Vínculo</string>
+    <string name="nav_farmacias">Farmácias próximas</string>
+
+    <!-- Aviso médico (RN02) -->
+    <string name="aviso_medico">Este aplicativo não substitui a orientação médica. Siga sempre as indicações do seu médico ou farmacêutico.</string>
+
+    <!-- EntradaActivity -->
+    <string name="entrada_titulo">Bem-vindo ao RemédioCerto</string>
+    <string name="entrada_aceite">Li e entendi o aviso</string>
+    <string name="entrada_aceite_obrigatorio">Marque que leu o aviso para continuar.</string>
+    <string name="entrada_btn_idoso">Sou idoso</string>
+    <string name="entrada_btn_familiar">Sou familiar ou cuidador</string>
+    <string name="entrada_nota">Login e cadastro serão ligados ao Firebase em uma próxima etapa. Por enquanto, escolha o perfil para conhecer as telas.</string>
+
+    <!-- Hoje -->
+    <string name="hoje_titulo">Hoje</string>
+    <string name="hoje_testar_alarme">Testar tela de alarme</string>
+
+    <!-- Medicamentos -->
+    <string name="medicamentos_titulo">Meus medicamentos</string>
+    <string name="medicamentos_adicionar">Adicionar</string>
+
+    <!-- Cadastro -->
+    <string name="cadastro_titulo">Cadastro de medicamento</string>
+    <string name="cadastro_nome">Nome do medicamento</string>
+    <string name="cadastro_dose">Dose (ex.: 500 mg)</string>
+    <string name="cadastro_forma">Forma (comprimido, gotas…)</string>
+    <string name="cadastro_observacoes">Observações</string>
+    <string name="cadastro_horarios">Horários</string>
+    <string name="cadastro_horario">Horário (ex.: 08:00)</string>
+    <string name="cadastro_continuo">Tratamento contínuo</string>
+    <string name="cadastro_todos_dias">Todos os dias da semana</string>
+    <string name="cadastro_salvar">Salvar</string>
+    <string name="cadastro_salvo_exemplo">Medicamento salvo (exemplo; o banco de dados vem na próxima etapa).</string>
+
+    <!-- Detalhes -->
+    <string name="detalhes_titulo">Detalhes do medicamento</string>
+    <string name="detalhes_bula_titulo">Informações da bula</string>
+    <string name="detalhes_bula_pendente">A consulta à bulário-api será ligada em uma próxima etapa.</string>
+    <string name="detalhes_consultar_bula">Consultar bula</string>
+    <string name="detalhes_editar">Editar</string>
+
+    <!-- Histórico -->
+    <string name="historico_titulo">Histórico de doses</string>
+    <string name="historico_adesao">Adesão: 83% das doses tomadas (exemplo)</string>
+
+    <!-- Configurações -->
+    <string name="config_titulo">Configurações</string>
+    <string name="config_acessibilidade">Modo de acessibilidade (fonte grande e alto contraste)</string>
+    <string name="config_acessibilidade_aviso">O modo de acessibilidade será aplicado em uma próxima etapa.</string>
+    <string name="config_adiamento">Adiar lembrete por</string>
+    <string name="config_5min">5 minutos</string>
+    <string name="config_10min">10 minutos</string>
+    <string name="config_15min">15 minutos</string>
+    <string name="config_vinculo">Vínculo com familiar</string>
+    <string name="config_farmacias">Farmácias próximas (opcional)</string>
+    <string name="config_sair">Sair</string>
+
+    <!-- Vínculo -->
+    <string name="vinculo_titulo">Vínculo com familiar</string>
+    <string name="vinculo_gerar_titulo">Para o idoso</string>
+    <string name="vinculo_gerar">Gerar código de convite</string>
+    <string name="vinculo_codigo_vazio">Nenhum código gerado</string>
+    <string name="vinculo_usar_titulo">Para o familiar</string>
+    <string name="vinculo_codigo_hint">Código de convite</string>
+    <string name="vinculo_vincular">Vincular</string>
+    <string name="vinculo_vinculado_exemplo">Vínculo criado (exemplo; o Firebase vem na próxima etapa).</string>
+    <string name="vinculo_lista_titulo">Quem acompanha você</string>
+    <string name="vinculo_revogar">Revogar</string>
+    <string name="vinculo_revogado_exemplo">Vínculo revogado (exemplo).</string>
+
+    <!-- Acompanhamento -->
+    <string name="acompanhamento_titulo">Acompanhamento</string>
+    <string name="acompanhamento_somente_leitura">Você vê as doses do dia do idoso, sem poder alterar nada.</string>
+
+    <!-- Farmácias -->
+    <string name="farmacias_titulo">Farmácias próximas</string>
+    <string name="farmacias_texto">Funcionalidade opcional, prevista para uma etapa futura.</string>
+
+    <!-- Alarme -->
+    <string name="alarme_titulo">Hora do remédio</string>
+    <string name="alarme_tomei">Tomei</string>
+    <string name="alarme_adiar">Adiar</string>
+    <string name="alarme_tomei_msg">Dose registrada como tomada (exemplo).</string>
+    <string name="alarme_adiar_msg">Lembrete adiado (exemplo).</string>
+</resources>

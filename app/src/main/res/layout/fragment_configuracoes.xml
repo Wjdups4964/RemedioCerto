@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_titulo"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchAcessibilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:minHeight="@dimen/altura_botao"
+            android:text="@string/config_acessibilidade"
+            android:textSize="@dimen/texto_corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/config_adiamento"
+            android:textSize="@dimen/texto_corpo"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgAdiamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rb10">
+
+            <RadioButton
+                android:id="@+id/rb5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/config_5min"
+                android:textSize="@dimen/texto_corpo" />
+
+            <RadioButton
+                android:id="@+id/rb10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/config_10min"
+                android:textSize="@dimen/texto_corpo" />
+
+            <RadioButton
+                android:id="@+id/rb15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/config_15min"
+                android:textSize="@dimen/texto_corpo" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVinculo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/altura_botao"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/config_vinculo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFarmacias"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/altura_botao"
+            android:layout_marginTop="8dp"
+            android:text="@string/config_farmacias" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSair"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/altura_botao"
+            android:layout_marginTop="8dp"
+            android:text="@string/config_sair" />
+    </LinearLayout>
+</ScrollView>

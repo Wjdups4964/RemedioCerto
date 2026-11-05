@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/margem">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alarme_titulo"
+        android:textSize="@dimen/texto_titulo" />
+
+    <TextView
+        android:id="@+id/tvNomeMedicamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem"
+        android:textSize="@dimen/texto_alarme"
+        android:textStyle="bold"
+        tools:text="Losartana" />
+
+    <TextView
+        android:id="@+id/tvDose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/texto_titulo"
+        tools:text="50 mg · 1 comprimido" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTomei"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/altura_botao_alarme"
+        android:layout_marginTop="48dp"
+        android:text="@string/alarme_tomei"
+        android:textSize="@dimen/texto_alarme" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAdiar"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/altura_botao_alarme"
+        android:layout_marginTop="@dimen/margem"
+        android:text="@string/alarme_adiar"
+        android:textSize="@dimen/texto_alarme" />
+</LinearLayout>

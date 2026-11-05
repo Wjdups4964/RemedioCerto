@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Abas do perfil familiar (os ids são os mesmos dos destinos do nav_graph) -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/acompanhamentoFragment"
+        android:icon="@drawable/ic_acompanhamento"
+        android:title="@string/nav_acompanhamento" />
+    <item
+        android:id="@+id/configuracoesFragment"
+        android:icon="@drawable/ic_configuracoes"
+        android:title="@string/nav_configuracoes" />
+</menu>

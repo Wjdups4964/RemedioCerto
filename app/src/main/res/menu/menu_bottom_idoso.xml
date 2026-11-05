@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Abas do perfil idoso (os ids são os mesmos dos destinos do nav_graph) -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/hojeFragment"
+        android:icon="@drawable/ic_hoje"
+        android:title="@string/nav_hoje" />
+    <item
+        android:id="@+id/medicamentosFragment"
+        android:icon="@drawable/ic_medicamentos"
+        android:title="@string/nav_medicamentos" />
+    <item
+        android:id="@+id/historicoFragment"
+        android:icon="@drawable/ic_historico"
+        android:title="@string/nav_historico" />
+    <item
+        android:id="@+id/configuracoesFragment"
+        android:icon="@drawable/ic_configuracoes"
+        android:title="@string/nav_configuracoes" />
+</menu>
