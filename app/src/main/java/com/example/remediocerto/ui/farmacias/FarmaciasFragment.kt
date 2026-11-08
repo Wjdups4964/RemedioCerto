@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.remediocerto.databinding.FragmentFarmaciasBinding
 
-/** Farmácias próximas (opcional, RF38 e RF39). */
 class FarmaciasFragment : Fragment() {
 
     private var _binding: FragmentFarmaciasBinding? = null

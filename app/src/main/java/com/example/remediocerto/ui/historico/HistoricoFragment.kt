@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.remediocerto.data.model.Amostras
 import com.example.remediocerto.databinding.FragmentHistoricoBinding
 
-/** Doses registradas por período e resumo de adesão (RF14, RF16, RF17). */
 class HistoricoFragment : Fragment() {
 
     private var _binding: FragmentHistoricoBinding? = null

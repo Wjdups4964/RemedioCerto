@@ -26,45 +26,6 @@
             android:text="@string/config_acessibilidade"
             android:textSize="@dimen/texto_corpo" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/config_adiamento"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:id="@+id/rgAdiamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/rb10">
-
-            <RadioButton
-                android:id="@+id/rb5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/config_5min"
-                android:textSize="@dimen/texto_corpo" />
-
-            <RadioButton
-                android:id="@+id/rb10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/config_10min"
-                android:textSize="@dimen/texto_corpo" />
-
-            <RadioButton
-                android:id="@+id/rb15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/config_15min"
-                android:textSize="@dimen/texto_corpo" />
-        </RadioGroup>
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnVinculo"
             android:layout_width="match_parent"

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.remediocerto.data.model.HistoricoItem
 import com.example.remediocerto.databinding.ItemHistoricoBinding
 
-/** Lista de doses registradas (RF14, RF16). */
 class HistoricoAdapter(private val itens: List<HistoricoItem>) :
     RecyclerView.Adapter<HistoricoAdapter.ViewHolder>() {
 

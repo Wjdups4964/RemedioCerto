@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.remediocerto.data.model.VinculoItem
 import com.example.remediocerto.databinding.ItemVinculoBinding
 
-/** Lista de familiares vinculados, com botão de revogar (RF30). */
 class VinculoAdapter(
     private val itens: List<VinculoItem>,
     private val aoRevogar: (VinculoItem) -> Unit,

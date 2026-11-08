@@ -2,13 +2,15 @@ package com.example.remediocerto.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.remediocerto.R
 import com.example.remediocerto.data.model.Perfil
 import com.example.remediocerto.databinding.ActivityMainBinding
-import com.example.remediocerto.util.aplicarInsetsDoSistema
 
 /**
  * Hospeda o NavHostFragment e a navegação inferior. As abas mudam conforme o
@@ -19,11 +21,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    // Altura da barra de botões do sistema (voltar, início, recentes), informada pelo aparelho.
+    private var espacoInferiorDoSistema = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.root.aplicarInsetsDoSistema()
+
+        // Reserva o topo e as laterais. O espaço de baixo é tratado em ajustarEspacoInferior().
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(barras.left, barras.top, barras.right, 0)
+            espacoInferiorDoSistema = barras.bottom
+            ajustarEspacoInferior()
+            insets
+        }
 
         val perfil = Perfil.valueOf(intent.getStringExtra(EXTRA_PERFIL) ?: Perfil.IDOSO.name)
 
@@ -53,7 +66,16 @@ class MainActivity : AppCompatActivity() {
         // A barra inferior só aparece nas telas principais de cada perfil.
         navController.addOnDestinationChangedListener { _, destino, _ ->
             binding.bottomNav.isVisible = destino.id in abas
+            ajustarEspacoInferior()
         }
+    }
+
+    // Com a barra de abas visível, ela cuida do espaço de baixo. Sem ela (cadastro, edição),
+    // o conteúdo precisa desse espaço para não ficar sob os botões do celular.
+    private fun ajustarEspacoInferior() {
+        binding.navHost.updatePadding(
+            bottom = if (binding.bottomNav.isVisible) 0 else espacoInferiorDoSistema
+        )
     }
 
     companion object {

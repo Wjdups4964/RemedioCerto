@@ -58,12 +58,5 @@
             android:layout_marginTop="@dimen/margem"
             android:text="@string/entrada_btn_familiar"
             android:textSize="@dimen/texto_corpo" />
-
-        <TextView
-            android:id="@+id/tvNota"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/entrada_nota" />
     </LinearLayout>
 </ScrollView>

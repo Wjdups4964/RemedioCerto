@@ -1,8 +1,5 @@
 package com.example.remediocerto.data.model
 
-// DADOS DE EXEMPLO — usados só para mostrar as telas funcionando.
-// Serão substituídos pelo Room (local) e pelo Firestore (familiar).
-
 data class DoseDia(val hora: String, val nome: String, val dose: String, val status: String)
 
 data class MedicamentoItem(val nome: String, val dose: String, val horarios: String)

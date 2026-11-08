@@ -10,7 +10,6 @@ import com.example.remediocerto.data.model.Amostras
 import com.example.remediocerto.databinding.FragmentAcompanhamentoBinding
 import com.example.remediocerto.ui.hoje.DoseDiaAdapter
 
-/** O que o familiar vê do idoso, somente leitura (RF31). Tempo real vem com o Firestore. */
 class AcompanhamentoFragment : Fragment() {
 
     private var _binding: FragmentAcompanhamentoBinding? = null

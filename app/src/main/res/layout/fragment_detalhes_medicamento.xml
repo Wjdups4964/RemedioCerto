@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/detalhes_bula_pendente"
+                    android:text="@string/detalhes_bula_inicial"
                     android:textSize="@dimen/texto_corpo" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -7,11 +7,6 @@ import com.example.remediocerto.R
 import com.example.remediocerto.databinding.ActivityAlarmeBinding
 import com.example.remediocerto.util.aplicarInsetsDoSistema
 
-/**
- * Tela de alarme: nome, dose e botões grandes "Tomei" e "Adiar" (RF09).
- * Abre sobre a tela bloqueada (declarado no manifest). Hoje mostra dados de
- * exemplo; depois recebe o id da dose e grava o registro (RF14).
- */
 class AlarmeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlarmeBinding

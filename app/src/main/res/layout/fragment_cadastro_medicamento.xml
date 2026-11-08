@@ -89,7 +89,10 @@
                 android:id="@+id/etHorario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="time" />
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.materialswitch.MaterialSwitch
@@ -108,6 +111,45 @@
             android:checked="true"
             android:minHeight="@dimen/altura_botao"
             android:text="@string/cadastro_continuo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/cadastro_adiamento"
+            android:textSize="@dimen/texto_corpo"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgAdiamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rb10">
+
+            <RadioButton
+                android:id="@+id/rb5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/cadastro_5min"
+                android:textSize="@dimen/texto_corpo" />
+
+            <RadioButton
+                android:id="@+id/rb10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/cadastro_10min"
+                android:textSize="@dimen/texto_corpo" />
+
+            <RadioButton
+                android:id="@+id/rb15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/altura_botao"
+                android:text="@string/cadastro_15min"
+                android:textSize="@dimen/texto_corpo" />
+        </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvar"

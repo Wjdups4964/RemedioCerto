@@ -10,10 +10,6 @@ import com.example.remediocerto.databinding.ActivityEntradaBinding
 import com.example.remediocerto.ui.main.MainActivity
 import com.example.remediocerto.util.aplicarInsetsDoSistema
 
-/**
- * Tela de entrada: aviso médico (RN02) e escolha do perfil.
- * Login e cadastro (RF25) entram na etapa do Firebase.
- */
 class EntradaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEntradaBinding

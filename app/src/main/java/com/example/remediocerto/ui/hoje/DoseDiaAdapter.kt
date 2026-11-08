@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.remediocerto.data.model.DoseDia
 import com.example.remediocerto.databinding.ItemDoseDiaBinding
 
-/** Lista de doses do dia (usada em Hoje e em Acompanhamento). */
 class DoseDiaAdapter(private val doses: List<DoseDia>) :
     RecyclerView.Adapter<DoseDiaAdapter.ViewHolder>() {
 

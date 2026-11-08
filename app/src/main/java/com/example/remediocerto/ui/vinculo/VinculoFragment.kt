@@ -11,7 +11,6 @@ import com.example.remediocerto.R
 import com.example.remediocerto.data.model.Amostras
 import com.example.remediocerto.databinding.FragmentVinculoBinding
 
-/** Gerar e usar código de convite; ver e revogar vínculos (RF28 a RF30). A lógica real vem com o Firebase. */
 class VinculoFragment : Fragment() {
 
     private var _binding: FragmentVinculoBinding? = null
@@ -27,11 +26,11 @@ class VinculoFragment : Fragment() {
             binding.tvCodigo.text = (100000..999999).random().toString()
         }
         binding.btnVincular.setOnClickListener {
-            Toast.makeText(requireContext(), R.string.vinculo_vinculado_exemplo, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.vinculo_vinculado, Toast.LENGTH_SHORT).show()
         }
         binding.rvVinculos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvVinculos.adapter = VinculoAdapter(Amostras.vinculos) {
-            Toast.makeText(requireContext(), R.string.vinculo_revogado_exemplo, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.vinculo_revogado, Toast.LENGTH_SHORT).show()
         }
     }
 

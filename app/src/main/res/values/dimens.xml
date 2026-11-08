@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Fonte 18 sp / 24 sp e área de toque 48 dp / 56 dp (RNF01, RNF03) -->
 <resources>
     <dimen name="texto_corpo">18sp</dimen>
     <dimen name="texto_titulo">24sp</dimen>

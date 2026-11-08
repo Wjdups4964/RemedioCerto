@@ -11,7 +11,6 @@ import com.example.remediocerto.data.model.Amostras
 import com.example.remediocerto.databinding.FragmentHojeBinding
 import com.example.remediocerto.ui.alarme.AlarmeActivity
 
-/** Tela inicial do idoso: lista do dia com doses tomadas e próximas (RF15). */
 class HojeFragment : Fragment() {
 
     private var _binding: FragmentHojeBinding? = null
@@ -26,7 +25,6 @@ class HojeFragment : Fragment() {
         binding.rvDoses.layoutManager = LinearLayoutManager(requireContext())
         binding.rvDoses.adapter = DoseDiaAdapter(Amostras.dosesHoje)
 
-        // Atalho de demonstração: abre a tela de alarme sem esperar o horário.
         binding.btnTestarAlarme.setOnClickListener {
             startActivity(Intent(requireContext(), AlarmeActivity::class.java))
         }

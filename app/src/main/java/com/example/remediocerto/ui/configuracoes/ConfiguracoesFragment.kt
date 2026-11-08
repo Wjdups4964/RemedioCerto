@@ -12,7 +12,6 @@ import com.example.remediocerto.R
 import com.example.remediocerto.databinding.FragmentConfiguracoesBinding
 import com.example.remediocerto.ui.entrada.EntradaActivity
 
-/** Acessibilidade, adiamento, vínculo e conta (RF34, RF36, RF25). As preferências são salvas em etapa futura. */
 class ConfiguracoesFragment : Fragment() {
 
     private var _binding: FragmentConfiguracoesBinding? = null
@@ -25,7 +24,7 @@ class ConfiguracoesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.switchAcessibilidade.setOnCheckedChangeListener { _, _ ->
-            Toast.makeText(requireContext(), R.string.config_acessibilidade_aviso, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.config_acessibilidade_alterada, Toast.LENGTH_SHORT).show()
         }
         binding.btnVinculo.setOnClickListener {
             findNavController().navigate(R.id.action_configuracoes_to_vinculo)

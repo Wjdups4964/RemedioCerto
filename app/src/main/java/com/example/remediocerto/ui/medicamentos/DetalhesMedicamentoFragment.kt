@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.remediocerto.R
 import com.example.remediocerto.databinding.FragmentDetalhesMedicamentoBinding
 
-/** Dados do medicamento e bula pela bulário-api (RF19 a RF21). A consulta real vem na etapa da API. */
 class DetalhesMedicamentoFragment : Fragment() {
 
     private var _binding: FragmentDetalhesMedicamentoBinding? = null
@@ -25,7 +24,7 @@ class DetalhesMedicamentoFragment : Fragment() {
         binding.tvDoseHorarios.text = "50 mg · 08:00 e 20:00"
 
         binding.btnConsultarBula.setOnClickListener {
-            binding.tvInfoBula.setText(R.string.detalhes_bula_pendente)
+            binding.tvInfoBula.setText(R.string.detalhes_bula_consultando)
         }
         binding.btnEditar.setOnClickListener {
             findNavController().navigate(R.id.action_detalhes_to_cadastro)

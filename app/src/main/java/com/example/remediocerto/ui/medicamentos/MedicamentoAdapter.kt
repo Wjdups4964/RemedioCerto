@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.remediocerto.data.model.MedicamentoItem
 import com.example.remediocerto.databinding.ItemMedicamentoBinding
 
-/** Lista de medicamentos cadastrados (RF05). */
 class MedicamentoAdapter(
     private val itens: List<MedicamentoItem>,
     private val aoClicar: (MedicamentoItem) -> Unit,

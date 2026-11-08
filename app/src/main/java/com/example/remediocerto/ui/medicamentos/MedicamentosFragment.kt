@@ -11,7 +11,6 @@ import com.example.remediocerto.R
 import com.example.remediocerto.data.model.Amostras
 import com.example.remediocerto.databinding.FragmentMedicamentosBinding
 
-/** Lista de medicamentos cadastrados, com botão para adicionar (RF05). */
 class MedicamentosFragment : Fragment() {
 
     private var _binding: FragmentMedicamentosBinding? = null
