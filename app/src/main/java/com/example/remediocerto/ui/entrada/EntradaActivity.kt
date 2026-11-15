@@ -32,7 +32,7 @@ class EntradaActivity : AppCompatActivity() {
     /** Login anônimo. Na primeira vez precisa de internet; depois o usuário fica salvo no aparelho. */
     private fun entrarNoFirebase() {
         authRepository.entrarAnonimo(
-            onSucesso = { loginPronto = true },
+            onSucesso = {  loginPronto = true  },
             onErro = {
                 Toast.makeText(this, R.string.entrada_erro_login, Toast.LENGTH_LONG).show()
             }
