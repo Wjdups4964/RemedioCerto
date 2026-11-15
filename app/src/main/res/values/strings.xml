@@ -95,4 +95,7 @@
     <string name="alarme_adiar">Adiar</string>
     <string name="alarme_tomei_msg">Dose registrada como tomada.</string>
     <string name="alarme_adiar_msg">Lembrete adiado.</string>
+
+    <string name="entrada_erro_login">Não foi possível entrar. Verifique a internet e tente de novo.</string>
+    <string name="entrada_conectando">Conectando… toque de novo em instantes.</string>
 </resources>
