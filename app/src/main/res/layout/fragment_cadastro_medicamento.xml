@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,145 +13,437 @@
 
         <TextView
             android:id="@+id/tvTitulo"
+            style="@style/Estilo.Titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cadastro_titulo"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold" />
+            android:text="@string/cadastro_titulo" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <!-- 1. Dados do medicamento -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:hint="@string/cadastro_nome">
+            android:layout_marginTop="@dimen/margem">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNome"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cadastro_nome">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/cadastro_dose">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/cadastro_forma">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etForma"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/cadastro_observacoes">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etObservacoes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:minLines="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2. Quando tomar, dentro do dia -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/cadastro_dose">
+            android:layout_marginTop="@dimen/margem">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDose"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/tvHorariosTitulo"
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cadastro_quando" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/cadastro_quando_ajuda"
+                    android:textColor="@color/rc_texto_suave"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggleModo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModoFixos"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_weight="1"
+                        android:text="@string/cadastro_modo_fixos" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModoIntervalo"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_weight="1"
+                        android:text="@string/cadastro_modo_intervalo" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <!-- Modo: horários fixos -->
+                <LinearLayout
+                    android:id="@+id/layoutFixos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/cadastro_fixos_ajuda"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/cadastro_horario">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etHorario"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Horários já escolhidos: toque no x para remover -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipsHorarios"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Modo: de X em X horas -->
+                <LinearLayout
+                    android:id="@+id/layoutIntervalo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/cadastro_intervalo_titulo"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipsIntervalo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip2h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/intervalo_2h"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip3h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/intervalo_3h"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip4h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/intervalo_4h"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip6h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/intervalo_6h"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip8h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/intervalo_8h"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip12h"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/intervalo_12h"
+                            android:textSize="18sp" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/cadastro_primeira_dose">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPrimeiraDose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvPrevia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_destaque"
+                        android:padding="12dp"
+                        android:textColor="@color/rc_primaria_escura"
+                        android:textSize="@dimen/texto_corpo"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. Em quais dias -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/cadastro_forma">
+            android:layout_marginTop="@dimen/margem">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etForma"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cadastro_dias_titulo" />
+
+                <RadioGroup
+                    android:id="@+id/rgDias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/rbTodoDia">
+
+                    <RadioButton
+                        android:id="@+id/rbTodoDia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_dias_todo_dia"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <RadioButton
+                        android:id="@+id/rbACadaDias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_dias_a_cada"
+                        android:textSize="@dimen/texto_corpo" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilIntervaloDias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cadastro_dias_quantos"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etIntervaloDias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="3" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. Por quanto tempo -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/cadastro_observacoes">
+            android:layout_marginTop="@dimen/margem">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etObservacoes"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:minLines="2" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <TextView
-            android:id="@+id/tvHorariosTitulo"
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cadastro_duracao_titulo" />
+
+                <RadioGroup
+                    android:id="@+id/rgDuracao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/rbContinuo">
+
+                    <RadioButton
+                        android:id="@+id/rbContinuo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_duracao_continuo"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <RadioButton
+                        android:id="@+id/rbPorDias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_duracao_dias"
+                        android:textSize="@dimen/texto_corpo" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDuracaoDias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cadastro_duracao_quantos"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDuracaoDias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="3" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. Adiamento -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/cadastro_horarios"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/margem">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/cadastro_horario">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etHorario"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:id="@+id/switchTodosDias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:checked="true"
-            android:minHeight="@dimen/altura_botao"
-            android:text="@string/cadastro_todos_dias" />
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cadastro_adiamento" />
 
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:id="@+id/switchContinuo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:minHeight="@dimen/altura_botao"
-            android:text="@string/cadastro_continuo" />
+                <RadioGroup
+                    android:id="@+id/rgAdiamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/rb10">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/cadastro_adiamento"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
+                    <RadioButton
+                        android:id="@+id/rb5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_5min"
+                        android:textSize="@dimen/texto_corpo" />
 
-        <RadioGroup
-            android:id="@+id/rgAdiamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/rb10">
+                    <RadioButton
+                        android:id="@+id/rb10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_10min"
+                        android:textSize="@dimen/texto_corpo" />
 
-            <RadioButton
-                android:id="@+id/rb5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/cadastro_5min"
-                android:textSize="@dimen/texto_corpo" />
-
-            <RadioButton
-                android:id="@+id/rb10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/cadastro_10min"
-                android:textSize="@dimen/texto_corpo" />
-
-            <RadioButton
-                android:id="@+id/rb15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/altura_botao"
-                android:text="@string/cadastro_15min"
-                android:textSize="@dimen/texto_corpo" />
-        </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/cadastro_15min"
+                        android:textSize="@dimen/texto_corpo" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvar"

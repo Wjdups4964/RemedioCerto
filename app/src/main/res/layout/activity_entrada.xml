@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -10,53 +11,361 @@
         android:orientation="vertical"
         android:padding="@dimen/margem">
 
-        <TextView
-            android:id="@+id/tvTitulo"
+        <!-- Faixa de boas-vindas -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/entrada_titulo"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem">
+            android:background="@drawable/bg_hero"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <TextView
-                android:id="@+id/tvAviso"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/bg_logo"
+                android:gravity="center"
+                android:text="@string/logo_emoji"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/tvTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margem"
-                android:text="@string/aviso_medico"
-                android:textSize="@dimen/texto_corpo" />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/entrada_titulo"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/checkAviso"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/entrada_subtitulo"
+                android:textColor="@color/rc_sobre_gradiente_suave"
+                android:textSize="@dimen/texto_corpo" />
+        </LinearLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progresso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:minHeight="@dimen/altura_botao"
-            android:text="@string/entrada_aceite"
-            android:textSize="@dimen/texto_corpo" />
+            android:layout_marginTop="12dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnIdoso"
+        <!-- Painel 1: entrar -->
+        <LinearLayout
+            android:id="@+id/painelLogin"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/entrada_btn_idoso"
-            android:textSize="@dimen/texto_corpo" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFamiliar"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margem">
+
+                    <TextView
+                        style="@style/Estilo.Secao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrada_login_titulo" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilLoginEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_email">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLoginEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilLoginSenha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_senha"
+                        app:endIconMode="password_toggle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLoginSenha"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEntrar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_marginTop="@dimen/margem"
+                        android:text="@string/entrada_btn_entrar"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEsqueciSenha"
+                        style="@style/Widget.RemedioCerto.Button.Texto"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/entrada_btn_esqueci" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnIrCadastro"
+                style="@style/Widget.RemedioCerto.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/altura_botao"
+                android:layout_marginTop="@dimen/margem"
+                android:text="@string/entrada_btn_criar_conta"
+                android:textSize="@dimen/texto_corpo" />
+        </LinearLayout>
+
+        <!-- Painel 2: criar conta -->
+        <LinearLayout
+            android:id="@+id/painelCadastro"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/entrada_btn_familiar"
-            android:textSize="@dimen/texto_corpo" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margem">
+
+                    <TextView
+                        style="@style/Estilo.Secao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrada_cadastro_titulo" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCadNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_nome">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCadNome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName|textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCadEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_email">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCadEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCadSenha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_senha_nova"
+                        app:endIconMode="password_toggle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCadSenha"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCadConfirma"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/entrada_senha_confirmar"
+                        app:endIconMode="password_toggle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCadConfirma"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/Estilo.Secao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margem"
+                        android:text="@string/entrada_perfil_titulo" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/togglePerfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnIdoso"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/altura_botao"
+                            android:layout_weight="1"
+                            android:text="@string/entrada_btn_idoso" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFamiliar"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/altura_botao"
+                            android:layout_weight="1"
+                            android:text="@string/entrada_btn_familiar" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margem">
+
+                    <TextView
+                        style="@style/Estilo.Secao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrada_aviso_titulo" />
+
+                    <TextView
+                        android:id="@+id/tvAviso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/aviso_medico"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <CheckBox
+                        android:id="@+id/checkAviso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/entrada_aceite"
+                        android:textSize="@dimen/texto_corpo" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCriarConta"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/altura_botao"
+                android:layout_marginTop="@dimen/margem"
+                android:text="@string/entrada_btn_criar_conta"
+                android:textSize="@dimen/texto_corpo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVoltarLogin"
+                style="@style/Widget.RemedioCerto.Button.Texto"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/altura_botao"
+                android:layout_marginTop="4dp"
+                android:text="@string/entrada_btn_tenho_conta" />
+        </LinearLayout>
+
+        <!-- Painel 3: confirmar o e-mail -->
+        <LinearLayout
+            android:id="@+id/painelVerificacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margem">
+
+                    <TextView
+                        style="@style/Estilo.Secao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrada_verif_titulo" />
+
+                    <TextView
+                        android:id="@+id/tvVerificacaoTexto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnJaConfirmei"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_marginTop="@dimen/margem"
+                        android:text="@string/entrada_btn_ja_confirmei"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnReenviar"
+                        style="@style/Widget.RemedioCerto.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/entrada_btn_reenviar"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTrocarConta"
+                        style="@style/Widget.RemedioCerto.Button.Texto"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/entrada_btn_outro_email" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

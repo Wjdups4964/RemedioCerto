@@ -7,18 +7,20 @@
 
     <TextView
         android:id="@+id/tvTitulo"
+        style="@style/Estilo.Titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/acompanhamento_titulo"
-        android:textSize="@dimen/texto_titulo"
-        android:textStyle="bold" />
+        android:text="@string/acompanhamento_titulo" />
 
     <TextView
         android:id="@+id/tvSomenteLeitura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margem"
+        android:background="@drawable/bg_destaque"
+        android:padding="@dimen/margem"
         android:text="@string/acompanhamento_somente_leitura"
+        android:textColor="@color/rc_primaria_escura"
         android:textSize="@dimen/texto_corpo" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -26,5 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margem"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 </LinearLayout>

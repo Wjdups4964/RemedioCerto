@@ -7,24 +7,41 @@
 
     <TextView
         android:id="@+id/tvTitulo"
+        style="@style/Estilo.Titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/historico_titulo"
-        android:textSize="@dimen/texto_titulo"
-        android:textStyle="bold" />
+        android:text="@string/historico_titulo" />
 
     <TextView
         android:id="@+id/tvAdesao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margem"
+        android:background="@drawable/bg_destaque"
+        android:gravity="center"
+        android:padding="@dimen/margem"
         android:text="@string/historico_adesao"
-        android:textSize="@dimen/texto_corpo" />
+        android:textColor="@color/rc_primaria_escura"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistorico"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margem"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvVazio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margem"
+        android:text="@string/historico_vazio"
+        android:textColor="@color/rc_texto_suave"
+        android:textSize="@dimen/texto_corpo"
+        android:visibility="gone" />
 </LinearLayout>

@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.ksp)
 }
 
 if (file("google-services.json").exists()) {
@@ -39,10 +38,6 @@ android {
     }
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
-}
-
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -58,10 +53,6 @@ dependencies {
 
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
-
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.kotlinx.coroutines.android)
