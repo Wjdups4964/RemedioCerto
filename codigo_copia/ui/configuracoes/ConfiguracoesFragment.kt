@@ -13,6 +13,8 @@ import com.example.remediocerto.R
 import com.example.remediocerto.data.repository.AuthRepository
 import com.example.remediocerto.databinding.FragmentConfiguracoesBinding
 import com.example.remediocerto.ui.entrada.EntradaActivity
+import com.example.remediocerto.util.ModoTema
+import com.example.remediocerto.util.Tema
 import com.example.remediocerto.util.coletar
 
 class ConfiguracoesFragment : Fragment() {
@@ -40,6 +42,18 @@ class ConfiguracoesFragment : Fragment() {
             Toast.makeText(requireContext(), R.string.config_acessibilidade_alterada, Toast.LENGTH_SHORT).show()
         }
 
+        mostrarTemaEscolhido()
+        // addOnButtonCheckedListener também dispara ao marcar por código; por isso só agimos se mudou de verdade.
+        binding.toggleTema.addOnButtonCheckedListener { _, botao, marcado ->
+            if (!marcado) return@addOnButtonCheckedListener
+            val modo = when (botao) {
+                R.id.btnTemaClaro -> ModoTema.CLARO
+                R.id.btnTemaEscuro -> ModoTema.ESCURO
+                else -> ModoTema.AUTOMATICO
+            }
+            if (modo != Tema.salvo(requireContext())) Tema.escolher(requireContext(), modo)
+        }
+
         binding.btnPerfil.setOnClickListener {
             findNavController().navigate(R.id.action_configuracoes_to_perfil)
         }
@@ -57,6 +71,16 @@ class ConfiguracoesFragment : Fragment() {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
+    }
+
+    private fun mostrarTemaEscolhido() {
+        binding.toggleTema.check(
+            when (Tema.salvo(requireContext())) {
+                ModoTema.CLARO -> R.id.btnTemaClaro
+                ModoTema.ESCURO -> R.id.btnTemaEscuro
+                ModoTema.AUTOMATICO -> R.id.btnTemaAutomatico
+            }
+        )
     }
 
     override fun onDestroyView() {

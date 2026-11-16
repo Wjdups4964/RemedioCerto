@@ -197,6 +197,12 @@
     <string name="hoje_confirmar_nao">Ainda não</string>
     <string name="hoje_ainda_nao">Ainda não é a hora desta dose.</string>
 
+    <!-- Aparência -->
+    <string name="config_tema">Aparência</string>
+    <string name="tema_automatico">Automático</string>
+    <string name="tema_claro">Claro</string>
+    <string name="tema_escuro">Escuro</string>
+
     <!-- Meu perfil -->
     <string name="nav_perfil">Meu perfil</string>
     <string name="config_perfil">Meu perfil</string>

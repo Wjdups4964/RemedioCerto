@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,6 +37,61 @@
                 android:padding="@dimen/margem"
                 android:text="@string/config_acessibilidade"
                 android:textSize="@dimen/texto_corpo" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
+
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/config_tema" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggleTema"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTemaAutomatico"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_weight="1"
+                        android:text="@string/tema_automatico"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTemaClaro"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_weight="1"
+                        android:text="@string/tema_claro"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTemaEscuro"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/altura_botao"
+                        android:layout_weight="1"
+                        android:text="@string/tema_escuro"
+                        android:textSize="@dimen/texto_corpo" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton

@@ -27,7 +27,7 @@
                 android:background="@drawable/bg_hora"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/rc_sobre_primaria"
                 android:textSize="@dimen/texto_titulo"
                 android:textStyle="bold"
                 tools:text="08:00" />

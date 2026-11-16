@@ -45,7 +45,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="@string/entrada_subtitulo"
-                android:textColor="@color/rc_primaria_clara"
+                android:textColor="@color/rc_sobre_gradiente_suave"
                 android:textSize="@dimen/texto_corpo" />
         </LinearLayout>
 

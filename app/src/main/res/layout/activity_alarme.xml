@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/alarme_titulo"
-        android:textColor="@color/rc_primaria_clara"
+        android:textColor="@color/rc_sobre_gradiente_suave"
         android:textSize="@dimen/texto_titulo"
         android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
         android:layout_height="@dimen/altura_botao_alarme"
         android:layout_marginTop="48dp"
         android:text="@string/alarme_tomei"
-        android:textColor="@color/rc_primaria_escura"
+        android:textColor="@color/rc_gradiente_inicio"
         android:textSize="@dimen/texto_alarme"
         app:backgroundTint="@color/white"
         app:cornerRadius="48dp" />

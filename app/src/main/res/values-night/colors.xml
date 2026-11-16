@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema escuro: mesmos nomes do tema claro, com cores adaptadas. Os layouts não precisam mudar. -->
+    <color name="rc_primaria">#4FD1C2</color>
+    <color name="rc_primaria_escura">#A7EDE3</color>
+    <color name="rc_primaria_clara">#12443F</color>
+    <color name="rc_gradiente_fim">#0F8A7D</color>
+    <color name="rc_coral_claro">#4A2219</color>
+    <color name="rc_fundo">#0E1716</color>
+    <color name="rc_superficie">#172625</color>
+    <color name="rc_superficie_alta">#213836</color>
+    <color name="rc_texto">#E2F0EE</color>
+    <color name="rc_texto_suave">#A3BEBA</color>
+    <color name="rc_contorno">#2D4744</color>
+    <color name="rc_contorno_forte">#7FA19C</color>
+    <color name="rc_sobre_primaria">#00302B</color>
+
+    <!-- Situação da dose -->
+    <color name="rc_tomada">#7ADBA3</color>
+    <color name="rc_tomada_fundo">#123424</color>
+    <color name="rc_adiada">#F2C14E</color>
+    <color name="rc_adiada_fundo">#3B2D0B</color>
+    <color name="rc_perdida">#FFB3AC</color>
+    <color name="rc_perdida_fundo">#4D1D20</color>
+</resources>

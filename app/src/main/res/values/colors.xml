@@ -4,6 +4,7 @@
     <color name="rc_primaria">#0B7D72</color>
     <color name="rc_primaria_escura">#075A52</color>
     <color name="rc_primaria_clara">#D4F1EC</color>
+    <color name="rc_gradiente_inicio">#075A52</color>
     <color name="rc_gradiente_fim">#18A999</color>
     <color name="rc_coral">#E8553A</color>
     <color name="rc_coral_claro">#FFE3DB</color>
@@ -14,6 +15,11 @@
     <color name="rc_texto">#12312F</color>
     <color name="rc_texto_suave">#4D6B68</color>
     <color name="rc_contorno">#C9E2DE</color>
+    <color name="rc_contorno_forte">#6F8F8B</color>
+
+    <!-- Texto sobre a cor primária (botões, horário) e sobre o degradê do cabeçalho -->
+    <color name="rc_sobre_primaria">#FFFFFF</color>
+    <color name="rc_sobre_gradiente_suave">#D4F1EC</color>
 
     <!-- Situação da dose -->
     <color name="rc_tomada">#17784A</color>
