@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.RemedioCerto" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Theme.RemedioCerto" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Cores principais -->
+        <item name="colorPrimary">@color/rc_primaria</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/rc_primaria_clara</item>
+        <item name="colorOnPrimaryContainer">@color/rc_primaria_escura</item>
+        <item name="colorSecondary">@color/rc_coral</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/rc_primaria_clara</item>
+        <item name="colorOnSecondaryContainer">@color/rc_primaria_escura</item>
+        <item name="colorTertiary">@color/rc_amarelo</item>
+
+        <!-- Fundo, superfícies e texto -->
+        <item name="android:colorBackground">@color/rc_fundo</item>
+        <item name="android:windowBackground">@color/rc_fundo</item>
+        <item name="colorSurface">@color/rc_fundo</item>
+        <item name="colorSurfaceContainerLowest">@color/rc_superficie</item>
+        <item name="colorSurfaceContainerLow">@color/rc_superficie</item>
+        <item name="colorSurfaceContainer">@color/rc_superficie</item>
+        <item name="colorSurfaceContainerHigh">@color/rc_superficie</item>
+        <item name="colorSurfaceContainerHighest">@color/rc_superficie_alta</item>
+        <item name="colorOnSurface">@color/rc_texto</item>
+        <item name="colorOnSurfaceVariant">@color/rc_texto_suave</item>
+        <item name="colorOutline">#6F8F8B</item>
+        <item name="colorOutlineVariant">@color/rc_contorno</item>
+
+        <!-- Cantos arredondados em tudo -->
+        <item name="shapeAppearanceSmallComponent">@style/Forma.Pequena</item>
+        <item name="shapeAppearanceMediumComponent">@style/Forma.Media</item>
+        <item name="shapeAppearanceLargeComponent">@style/Forma.Grande</item>
+
+        <!-- Estilos dos componentes -->
+        <item name="materialCardViewStyle">@style/Widget.RemedioCerto.Card</item>
+        <item name="materialButtonStyle">@style/Widget.RemedioCerto.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.RemedioCerto.Button.Outlined</item>
+        <item name="bottomNavigationStyle">@style/Widget.RemedioCerto.BottomNav</item>
+    </style>
 </resources>

@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_alarme"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/margem">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alarme_emoji"
+        android:textSize="72sp" />
+
+    <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/alarme_titulo"
-        android:textSize="@dimen/texto_titulo" />
+        android:textColor="@color/rc_primaria_clara"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvNomeMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margem"
+        android:textColor="@color/white"
         android:textSize="@dimen/texto_alarme"
         android:textStyle="bold"
         tools:text="Losartana" />
@@ -28,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/white"
         android:textSize="@dimen/texto_titulo"
         tools:text="50 mg · 1 comprimido" />
 
@@ -37,14 +50,20 @@
         android:layout_height="@dimen/altura_botao_alarme"
         android:layout_marginTop="48dp"
         android:text="@string/alarme_tomei"
-        android:textSize="@dimen/texto_alarme" />
+        android:textColor="@color/rc_primaria_escura"
+        android:textSize="@dimen/texto_alarme"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="48dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAdiar"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.RemedioCerto.Button.Outlined"
         android:layout_width="match_parent"
         android:layout_height="@dimen/altura_botao_alarme"
         android:layout_marginTop="@dimen/margem"
         android:text="@string/alarme_adiar"
-        android:textSize="@dimen/texto_alarme" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_alarme"
+        app:cornerRadius="48dp"
+        app:strokeColor="@color/white" />
 </LinearLayout>

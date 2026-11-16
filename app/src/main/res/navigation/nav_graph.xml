@@ -52,12 +52,21 @@
         android:label="@string/nav_configuracoes"
         tools:layout="@layout/fragment_configuracoes">
         <action
+            android:id="@+id/action_configuracoes_to_perfil"
+            app:destination="@id/perfilFragment" />
+        <action
             android:id="@+id/action_configuracoes_to_vinculo"
             app:destination="@id/vinculoFragment" />
         <action
             android:id="@+id/action_configuracoes_to_farmacias"
             app:destination="@id/farmaciasFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.remediocerto.ui.perfil.PerfilFragment"
+        android:label="@string/nav_perfil"
+        tools:layout="@layout/fragment_perfil" />
 
     <fragment
         android:id="@+id/vinculoFragment"

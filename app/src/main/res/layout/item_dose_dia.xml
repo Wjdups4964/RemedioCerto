@@ -1,52 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:minHeight="@dimen/altura_botao"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="@dimen/margem">
 
-        <TextView
-            android:id="@+id/tvHora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold"
-            tools:text="08:00" />
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margem"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/altura_botao"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvNome"
-                android:layout_width="match_parent"
+                android:id="@+id/tvHora"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/texto_corpo"
-                tools:text="Losartana" />
+                android:background="@drawable/bg_hora"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/texto_titulo"
+                android:textStyle="bold"
+                tools:text="08:00" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margem"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Losartana" />
+
+                <TextView
+                    android:id="@+id/tvDose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/rc_texto_suave"
+                    android:textSize="@dimen/texto_corpo"
+                    tools:text="50 mg" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvDose"
-                android:layout_width="match_parent"
+                android:id="@+id/tvStatus"
+                style="@style/Estilo.Pilula"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="50 mg" />
+                tools:text="Tomada" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
+        <!-- Botões da dose: aparecem enquanto ela ainda não foi tomada -->
+        <LinearLayout
+            android:id="@+id/layoutAcoes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_corpo"
-            tools:text="Tomada" />
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTomei"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/altura_botao"
+                android:layout_weight="1"
+                android:text="@string/alarme_tomei" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdiar"
+                style="@style/Widget.RemedioCerto.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/altura_botao"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/alarme_adiar" />
+        </LinearLayout>
+
+        <!-- Antes da hora da dose: explica por que ainda não há botões -->
+        <TextView
+            android:id="@+id/tvDisponivel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/rc_texto_suave"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:text="Você poderá confirmar a dose às 14:00."
+            tools:visibility="visible" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

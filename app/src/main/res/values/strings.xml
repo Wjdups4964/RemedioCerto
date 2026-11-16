@@ -98,4 +98,122 @@
 
     <string name="entrada_erro_login">Não foi possível entrar. Verifique a internet e tente de novo.</string>
     <string name="entrada_conectando">Conectando… toque de novo em instantes.</string>
+
+    <!-- Visual novo -->
+    <string name="logo_emoji">💊</string>
+    <string name="alarme_emoji">⏰</string>
+    <string name="seta">›</string>
+    <string name="entrada_subtitulo">Seus remédios, na hora certa.</string>
+    <string name="entrada_aviso_titulo">Aviso importante</string>
+    <string name="medicamentos_vazio">Nenhum medicamento cadastrado. Toque em Adicionar.</string>
+    <string name="historico_vazio">Ainda não há doses registradas.</string>
+    <string name="detalhes_apagar">Apagar medicamento</string>
+
+    <!-- Telas ligadas ao Firestore -->
+    <string name="status_tomada">Tomada</string>
+    <string name="status_adiada">Adiada</string>
+    <string name="status_perdida">Perdida</string>
+    <string name="status_proxima">Próxima</string>
+    <string name="status_agora">Hora de tomar</string>
+    <string name="status_atrasada">Atrasada</string>
+    <string name="hoje_vazio">Nenhuma dose para hoje. Cadastre um medicamento na aba Medicamentos.</string>
+    <string name="hoje_adiada">Lembrete adiado por %1$d minutos.</string>
+    <string name="cadastro_editar_titulo">Editar medicamento</string>
+    <string name="cadastro_nome_obrigatorio">Informe o nome do medicamento.</string>
+    <string name="cadastro_horario_repetido">Esse horário já foi adicionado.</string>
+    <string name="cadastro_remover_horario">Remover o horário %1$s</string>
+    <string name="detalhes_apagar_titulo">Apagar este medicamento?</string>
+    <string name="detalhes_apagar_msg">O medicamento e seus horários serão removidos. O histórico de doses é mantido.</string>
+    <string name="detalhes_apagar_sim">Apagar</string>
+    <string name="detalhes_apagado">Medicamento apagado.</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="historico_adesao_pct">Adesão: %1$d%% das doses tomadas</string>
+    <string name="historico_sem_adesao">Adesão: ainda sem doses registradas</string>
+
+    <!-- Cadastro: agenda em três perguntas -->
+    <string name="cadastro_quando">Quando tomar</string>
+    <string name="cadastro_quando_ajuda">Escolha como os horários do dia são definidos.</string>
+    <string name="cadastro_modo_fixos">Horários fixos</string>
+    <string name="cadastro_modo_intervalo">De X em X horas</string>
+    <string name="cadastro_fixos_ajuda">Toque no campo e escolha cada horário. Ex.: 08:00 e 20:00 = duas vezes ao dia.</string>
+    <string name="cadastro_intervalo_titulo">Tomar de quantas em quantas horas?</string>
+    <string name="intervalo_2h">2 em 2 horas</string>
+    <string name="intervalo_3h">3 em 3 horas</string>
+    <string name="intervalo_4h">4 em 4 horas</string>
+    <string name="intervalo_6h">6 em 6 horas</string>
+    <string name="intervalo_8h">8 em 8 horas</string>
+    <string name="intervalo_12h">12 em 12 horas</string>
+    <string name="cadastro_primeira_dose">Primeira dose do dia às</string>
+    <string name="cadastro_previa">Doses ao longo do dia: %1$s</string>
+    <string name="cadastro_dias_titulo">Em quais dias</string>
+    <string name="cadastro_dias_todo_dia">Todos os dias</string>
+    <string name="cadastro_dias_a_cada">De vez em quando (ex.: 7 em 7 dias = uma vez por semana)</string>
+    <string name="cadastro_dias_quantos">Repetir a cada quantos dias?</string>
+    <string name="cadastro_duracao_titulo">Por quanto tempo</string>
+    <string name="cadastro_duracao_continuo">Uso contínuo (sem data para terminar)</string>
+    <string name="cadastro_duracao_dias">Só por alguns dias (ex.: antibiótico por 7 dias)</string>
+    <string name="cadastro_duracao_quantos">Quantos dias de tratamento?</string>
+    <string name="cadastro_dias_invalido">Informe um número de 1 a 365.</string>
+
+    <!-- Conta: entrar, criar conta, confirmar e-mail -->
+    <string name="entrada_login_titulo">Entrar</string>
+    <string name="entrada_cadastro_titulo">Criar conta</string>
+    <string name="entrada_email">E-mail</string>
+    <string name="entrada_senha">Senha</string>
+    <string name="entrada_senha_nova">Senha (mínimo 8 caracteres)</string>
+    <string name="entrada_senha_confirmar">Repita a senha</string>
+    <string name="entrada_btn_entrar">Entrar</string>
+    <string name="entrada_btn_esqueci">Esqueci minha senha</string>
+    <string name="entrada_btn_criar_conta">Criar conta</string>
+    <string name="entrada_btn_tenho_conta">Já tenho conta</string>
+    <string name="entrada_perfil_titulo">Você é:</string>
+    <string name="entrada_escolher_perfil">Como você vai usar o app?</string>
+    <string name="entrada_verif_titulo">Confirme seu e-mail</string>
+    <string name="entrada_verif_texto">Enviamos um link de confirmação para %1$s. Abra o e-mail, toque no link e volte aqui. Olhe também a caixa de spam.</string>
+    <string name="entrada_btn_ja_confirmei">Já confirmei</string>
+    <string name="entrada_btn_reenviar">Reenviar e-mail</string>
+    <string name="entrada_btn_outro_email">Usar outro e-mail</string>
+    <string name="erro_email_invalido">Digite um e-mail válido.</string>
+    <string name="erro_senha_vazia">Digite a senha.</string>
+    <string name="erro_senha_curta">A senha precisa ter pelo menos 8 caracteres.</string>
+    <string name="erro_senha_diferente">As senhas não são iguais.</string>
+    <string name="erro_perfil">Escolha se você é idoso ou familiar.</string>
+    <string name="erro_credenciais">E-mail ou senha incorretos.</string>
+    <string name="erro_email_em_uso">Já existe uma conta com esse e-mail. Toque em “Já tenho conta”.</string>
+    <string name="erro_senha_fraca">Senha muito fraca. Use pelo menos 8 caracteres.</string>
+    <string name="erro_rede">Sem internet. Conecte-se e tente de novo.</string>
+    <string name="erro_muitas_tentativas">Muitas tentativas. Aguarde alguns minutos e tente de novo.</string>
+    <string name="erro_generico">Não foi possível concluir. Tente de novo.</string>
+    <string name="verif_enviada">Conta criada! Enviamos o e-mail de confirmação.</string>
+    <string name="verif_reenviada">E-mail reenviado. Olhe também o spam.</string>
+    <string name="verif_pendente">Ainda não confirmado. Toque no link do e-mail e tente de novo.</string>
+    <string name="recuperar_enviada">Se existir uma conta com esse e-mail, enviamos um link para criar uma nova senha.</string>
+
+    <!-- Hoje: confirmar dose -->
+    <string name="hoje_disponivel_as">Você poderá confirmar a dose às %1$s.</string>
+    <string name="hoje_confirmar_titulo">Confirmar dose</string>
+    <string name="hoje_confirmar_msg">Você tomou %1$s agora? (dose das %2$s)</string>
+    <string name="hoje_confirmar_sim">Sim, tomei</string>
+    <string name="hoje_confirmar_nao">Ainda não</string>
+    <string name="hoje_ainda_nao">Ainda não é a hora desta dose.</string>
+
+    <!-- Meu perfil -->
+    <string name="nav_perfil">Meu perfil</string>
+    <string name="config_perfil">Meu perfil</string>
+    <string name="perfil_titulo">Meu perfil</string>
+    <string name="perfil_conta">Conta: %1$s</string>
+    <string name="perfil_nome">Nome</string>
+    <string name="perfil_nascimento">Data de nascimento</string>
+    <string name="perfil_idade">Idade: %1$d anos</string>
+    <string name="perfil_sexo">Sexo (opcional)</string>
+    <string name="sexo_feminino">Feminino</string>
+    <string name="sexo_masculino">Masculino</string>
+    <string name="sexo_outro">Outro</string>
+    <string name="sexo_nao_informar">Prefiro não informar</string>
+    <string name="perfil_contato">Contato de emergência (opcional): nome e telefone</string>
+    <string name="perfil_salvar">Salvar</string>
+    <string name="perfil_salvo">Perfil salvo.</string>
+    <string name="erro_nome">Digite seu nome.</string>
+    <string name="entrada_nome">Seu nome</string>
+    <string name="hoje_ola">Olá, %1$s</string>
 </resources>

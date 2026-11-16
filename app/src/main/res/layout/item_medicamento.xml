@@ -3,30 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp"
     android:clickable="true"
     android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:minHeight="@dimen/altura_botao"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="@dimen/margem">
 
         <TextView
-            android:id="@+id/tvNome"
-            android:layout_width="match_parent"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_pilula"
+            android:gravity="center"
+            android:text="@string/logo_emoji"
+            android:textSize="26sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold"
-            tools:text="Losartana" />
+            android:layout_marginStart="@dimen/margem"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:text="Losartana" />
+
+            <TextView
+                android:id="@+id/tvDoseHorarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/rc_texto_suave"
+                android:textSize="@dimen/texto_corpo"
+                tools:text="50 mg · 08:00 e 20:00" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tvDoseHorarios"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/texto_corpo"
-            tools:text="50 mg · 08:00 e 20:00" />
+            android:text="@string/seta"
+            android:textColor="@color/rc_primaria"
+            android:textSize="32sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

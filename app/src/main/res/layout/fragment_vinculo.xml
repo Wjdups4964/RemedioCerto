@@ -11,72 +11,96 @@
 
         <TextView
             android:id="@+id/tvTitulo"
+            style="@style/Estilo.Titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/vinculo_titulo"
-            android:textSize="@dimen/texto_titulo"
-            android:textStyle="bold" />
+            android:text="@string/vinculo_titulo" />
 
-        <TextView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/vinculo_gerar_titulo"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/margem">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGerarCodigo"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
-            android:layout_marginTop="8dp"
-            android:text="@string/vinculo_gerar" />
-
-        <TextView
-            android:id="@+id/tvCodigo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/vinculo_codigo_vazio"
-            android:textSize="@dimen/texto_alarme" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/vinculo_usar_titulo"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/vinculo_codigo_hint">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCodigoConvite"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVincular"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vinculo_gerar_titulo" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGerarCodigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/altura_botao"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/vinculo_gerar" />
+
+                <TextView
+                    android:id="@+id/tvCodigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_destaque"
+                    android:gravity="center"
+                    android:padding="@dimen/margem"
+                    android:text="@string/vinculo_codigo_vazio"
+                    android:textColor="@color/rc_primaria_escura"
+                    android:textSize="@dimen/texto_alarme"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
-            android:layout_marginTop="8dp"
-            android:text="@string/vinculo_vincular" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margem">
+
+                <TextView
+                    style="@style/Estilo.Secao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vinculo_usar_titulo" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/vinculo_codigo_hint">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCodigoConvite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVincular"
+                    style="@style/Widget.RemedioCerto.Button.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/altura_botao"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/vinculo_vincular" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            style="@style/Estilo.Secao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem"
-            android:text="@string/vinculo_lista_titulo"
-            android:textSize="@dimen/texto_corpo"
-            android:textStyle="bold" />
+            android:text="@string/vinculo_lista_titulo" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvVinculos"
