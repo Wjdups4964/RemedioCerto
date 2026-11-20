@@ -7,7 +7,7 @@
     <item
         android:id="@+id/medicamentosFragment"
         android:icon="@drawable/ic_medicamentos"
-        android:title="@string/nav_medicamentos" />
+        android:title="@string/aba_remedios" />
     <item
         android:id="@+id/historicoFragment"
         android:icon="@drawable/ic_historico"
@@ -15,5 +15,5 @@
     <item
         android:id="@+id/configuracoesFragment"
         android:icon="@drawable/ic_configuracoes"
-        android:title="@string/nav_configuracoes" />
+        android:title="@string/aba_ajustes" />
 </menu>

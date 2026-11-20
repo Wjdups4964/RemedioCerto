@@ -7,6 +7,9 @@
     <string name="nav_medicamentos">Medicamentos</string>
     <string name="nav_historico">Histórico</string>
     <string name="nav_configuracoes">Configurações</string>
+    <!-- Nomes curtos para a barra de baixo: nomes longos não cabem e viravam "Configur..." -->
+    <string name="aba_remedios">Remédios</string>
+    <string name="aba_ajustes">Ajustes</string>
     <string name="nav_acompanhamento">Acompanhamento</string>
     <string name="nav_vinculo">Vínculo</string>
     <string name="nav_farmacias">Farmácias próximas</string>
@@ -32,7 +35,8 @@
     <!-- Cadastro -->
     <string name="cadastro_titulo">Cadastro de medicamento</string>
     <string name="cadastro_nome">Nome do medicamento</string>
-    <string name="cadastro_dose">Dose (ex.: 500 mg)</string>
+    <string name="cadastro_dose">Dose</string>
+    <string name="cadastro_dose_ajuda">Exemplo: 500 mg</string>
     <string name="cadastro_forma">Forma (comprimido, gotas…)</string>
     <string name="cadastro_observacoes">Observações</string>
     <string name="cadastro_horarios">Horários</string>
@@ -51,14 +55,14 @@
     <!-- Detalhes -->
     <string name="detalhes_titulo">Detalhes do medicamento</string>
     <string name="detalhes_bula_titulo">Informações da bula</string>
-    <string name="detalhes_bula_inicial">Toque em “Consultar bula” para ver o nome comercial, o registro e a empresa.</string>
+    <string name="detalhes_bula_inicial">Toque em “Consultar bula” para ver para que serve o medicamento e o link da bula oficial.</string>
     <string name="detalhes_bula_consultando">Consultando as informações da bula…</string>
     <string name="detalhes_consultar_bula">Consultar bula</string>
     <string name="detalhes_editar">Editar</string>
 
     <!-- Histórico -->
     <string name="historico_titulo">Histórico de doses</string>
-    <string name="historico_adesao">Adesão: 83% das doses tomadas</string>
+    <string name="historico_adesao">Últimos 7 dias: 5 de 6 doses tomadas.</string>
 
     <!-- Configurações -->
     <string name="config_titulo">Configurações</string>
@@ -76,7 +80,7 @@
     <string name="vinculo_usar_titulo">Para o familiar</string>
     <string name="vinculo_codigo_hint">Código de convite</string>
     <string name="vinculo_vincular">Vincular</string>
-    <string name="vinculo_vinculado">Vínculo criado.</string>
+    <string name="vinculo_vinculado">Vínculo criado! Agora você vê as doses do idoso na aba Acompanhamento.</string>
     <string name="vinculo_lista_titulo">Quem acompanha você</string>
     <string name="vinculo_revogar">Revogar</string>
     <string name="vinculo_revogado">Vínculo revogado.</string>
@@ -116,7 +120,7 @@
     <string name="status_proxima">Próxima</string>
     <string name="status_agora">Hora de tomar</string>
     <string name="status_atrasada">Atrasada</string>
-    <string name="hoje_vazio">Nenhuma dose para hoje. Cadastre um medicamento na aba Medicamentos.</string>
+    <string name="hoje_vazio">Nenhuma dose para hoje. Cadastre um medicamento na aba Remédios.</string>
     <string name="hoje_adiada">Lembrete adiado por %1$d minutos.</string>
     <string name="cadastro_editar_titulo">Editar medicamento</string>
     <string name="cadastro_nome_obrigatorio">Informe o nome do medicamento.</string>
@@ -127,8 +131,6 @@
     <string name="detalhes_apagar_sim">Apagar</string>
     <string name="detalhes_apagado">Medicamento apagado.</string>
     <string name="cancelar">Cancelar</string>
-    <string name="historico_adesao_pct">Adesão: %1$d%% das doses tomadas</string>
-    <string name="historico_sem_adesao">Adesão: ainda sem doses registradas</string>
 
     <!-- Cadastro: agenda em três perguntas -->
     <string name="cadastro_quando">Quando tomar</string>
@@ -145,10 +147,11 @@
     <string name="intervalo_12h">12 em 12 horas</string>
     <string name="cadastro_primeira_dose">Primeira dose do dia às</string>
     <string name="cadastro_previa">Doses ao longo do dia: %1$s</string>
-    <string name="cadastro_dias_titulo">Em quais dias</string>
+    <string name="cadastro_dias_titulo">Em quais dias você toma?</string>
     <string name="cadastro_dias_todo_dia">Todos os dias</string>
     <string name="cadastro_dias_a_cada">De vez em quando (ex.: 7 em 7 dias = uma vez por semana)</string>
-    <string name="cadastro_dias_quantos">Repetir a cada quantos dias?</string>
+    <string name="cadastro_dias_quantos">Número de dias</string>
+    <string name="cadastro_dias_quantos_ajuda">Repetir a cada quantos dias?</string>
     <string name="cadastro_duracao_titulo">Por quanto tempo</string>
     <string name="cadastro_duracao_continuo">Uso contínuo (sem data para terminar)</string>
     <string name="cadastro_duracao_dias">Só por alguns dias (ex.: antibiótico por 7 dias)</string>
@@ -160,7 +163,8 @@
     <string name="entrada_cadastro_titulo">Criar conta</string>
     <string name="entrada_email">E-mail</string>
     <string name="entrada_senha">Senha</string>
-    <string name="entrada_senha_nova">Senha (mínimo 8 caracteres)</string>
+    <string name="entrada_senha_nova">Senha</string>
+    <string name="entrada_senha_nova_ajuda">Use no mínimo 8 caracteres.</string>
     <string name="entrada_senha_confirmar">Repita a senha</string>
     <string name="entrada_btn_entrar">Entrar</string>
     <string name="entrada_btn_esqueci">Esqueci minha senha</string>
@@ -216,7 +220,8 @@
     <string name="sexo_masculino">Masculino</string>
     <string name="sexo_outro">Outro</string>
     <string name="sexo_nao_informar">Prefiro não informar</string>
-    <string name="perfil_contato">Contato de emergência (opcional): nome e telefone</string>
+    <string name="perfil_contato">Contato de emergência</string>
+    <string name="perfil_contato_ajuda">Opcional. Escreva o nome e o telefone.</string>
     <string name="perfil_salvar">Salvar</string>
     <string name="perfil_salvo">Perfil salvo.</string>
     <string name="erro_nome">Digite seu nome.</string>

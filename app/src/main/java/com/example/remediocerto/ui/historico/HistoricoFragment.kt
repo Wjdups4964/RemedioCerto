@@ -29,14 +29,14 @@ class HistoricoFragment : Fragment() {
         binding.rvHistorico.layoutManager = LinearLayoutManager(requireContext())
         binding.rvHistorico.adapter = adapter
 
-        coletar(viewModel.registros) { registros ->
-            adapter.submitList(registros)
-            binding.tvVazio.isVisible = registros.isEmpty()
+        coletar(viewModel.itens) { itens ->
+            adapter.submitList(itens)
+            binding.tvVazio.isVisible = itens.isEmpty()
         }
-        coletar(viewModel.adesao) { adesao ->
+        coletar(viewModel.resumo) { resumo ->
             binding.tvAdesao.text =
-                if (adesao == null) getString(R.string.historico_sem_adesao)
-                else getString(R.string.historico_adesao_pct, adesao)
+                if (resumo == null) getString(R.string.historico_sem_semana)
+                else resources.getQuantityString(R.plurals.historico_semana, resumo.total, resumo.tomadas, resumo.total)
         }
     }
 

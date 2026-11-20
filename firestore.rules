@@ -1,0 +1,85 @@
+rules_version = '2';
+
+// Regras de segurança do RemédioCerto. Para publicar: Firebase Console > Firestore Database > Regras,
+// cole este arquivo inteiro e toque em "Publicar".
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function logado() {
+      return request.auth != null;
+    }
+
+    // O familiar só lê os dados do idoso enquanto existir o documento vinculos/{idoso}_{familiar}.
+    function familiarVinculado(idosoUid) {
+      return logado()
+        && exists(/databases/$(database)/documents/vinculos/$(idosoUid + '_' + request.auth.uid));
+    }
+
+    // Cada pessoa lê e grava tudo o que está na própria conta.
+    match /usuarios/{uid}/{document=**} {
+      allow read, write: if logado() && request.auth.uid == uid;
+    }
+
+    // Familiar vinculado: SOMENTE LEITURA, e só de medicamentos e registros (não vê dados pessoais).
+    match /usuarios/{uid}/medicamentos/{id} {
+      allow read: if familiarVinculado(uid);
+    }
+    match /usuarios/{uid}/registros/{id} {
+      allow read: if familiarVinculado(uid);
+    }
+
+    // Convites: o código (8 dígitos) é o id do documento.
+    match /convites/{codigo} {
+      // Só dá para ler sabendo o código; listar todos os convites é proibido.
+      allow get: if logado();
+
+      // Só o idoso cria o próprio convite, ainda não usado, com validade entre agora e 2 dias.
+      allow create: if logado()
+        && codigo.matches('[0-9]{8}')
+        && request.resource.data.keys().hasOnly(['codigo', 'idosoUid', 'idosoNome', 'criadoEm', 'expiraEm', 'usado', 'usadoPor'])
+        && request.resource.data.idosoUid == request.auth.uid
+        && request.resource.data.usado == false
+        && request.resource.data.expiraEm is timestamp
+        && request.resource.data.expiraEm > request.time
+        && request.resource.data.expiraEm < request.time + duration.value(2, 'd');
+
+      // O familiar marca como usado, uma única vez e antes de vencer. Nada mais pode mudar.
+      allow update: if logado()
+        && resource.data.usado == false
+        && resource.data.expiraEm > request.time
+        && resource.data.idosoUid != request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['usado', 'usadoPor'])
+        && request.resource.data.usado == true
+        && request.resource.data.usadoPor == request.auth.uid;
+
+      allow delete: if logado() && resource.data.idosoUid == request.auth.uid;
+    }
+
+    // Vínculos: vinculos/{idosoUid}_{familiarUid}.
+    match /vinculos/{vinculoId} {
+      // Só os dois envolvidos enxergam. (resource == null deixa checar se o par já existe.)
+      allow get: if logado()
+        && (resource == null
+            || resource.data.idosoUid == request.auth.uid
+            || resource.data.familiarUid == request.auth.uid);
+      allow list: if logado()
+        && (resource.data.idosoUid == request.auth.uid
+            || resource.data.familiarUid == request.auth.uid);
+
+      // O familiar cria usando um convite que existe, é desse idoso, não foi usado e não venceu.
+      allow create: if logado()
+        && request.resource.data.keys().hasOnly(['idosoUid', 'idosoNome', 'familiarUid', 'familiarNome', 'codigo', 'criadoEm'])
+        && request.resource.data.familiarUid == request.auth.uid
+        && request.resource.data.idosoUid != request.auth.uid
+        && vinculoId == request.resource.data.idosoUid + '_' + request.auth.uid
+        && get(/databases/$(database)/documents/convites/$(request.resource.data.codigo)).data.idosoUid == request.resource.data.idosoUid
+        && get(/databases/$(database)/documents/convites/$(request.resource.data.codigo)).data.usado == false
+        && get(/databases/$(database)/documents/convites/$(request.resource.data.codigo)).data.expiraEm > request.time;
+
+      // O idoso revoga ou o familiar deixa de acompanhar. Vínculo não é editado.
+      allow delete: if logado()
+        && (resource.data.idosoUid == request.auth.uid
+            || resource.data.familiarUid == request.auth.uid);
+    }
+  }
+}

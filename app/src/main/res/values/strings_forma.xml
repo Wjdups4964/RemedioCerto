@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Forma do medicamento (escolha no cadastro). O texto escolhido é o que fica salvo. -->
+    <string name="cadastro_forma_titulo">Forma do remédio (opcional)</string>
+    <string name="forma_comprimido">Comprimido</string>
+    <string name="forma_capsula">Cápsula</string>
+    <string name="forma_gotas">Gotas</string>
+    <string name="forma_xarope">Xarope</string>
+    <string name="forma_injecao">Injeção</string>
+    <string name="forma_pomada">Pomada</string>
+    <string name="forma_outro">Outro</string>
+</resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -153,7 +154,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/perfil_contato">
+                    android:hint="@string/perfil_contato"
+                    app:helperText="@string/perfil_contato_ajuda">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etContato"
@@ -167,7 +169,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/altura_botao"
             android:layout_marginTop="@dimen/margem"
             android:text="@string/perfil_salvar" />
     </LinearLayout>

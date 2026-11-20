@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bula (serviço bulario-api) -->
+    <string name="bula_principio">Princípio ativo: %1$s</string>
+    <string name="bula_classe">Tipo: %1$s</string>
+    <string name="bula_indicacao">Para que serve: %1$s</string>
+    <string name="bula_observacao">Atenção: %1$s</string>
+    <string name="bula_revisado">Informação revisada em %1$s.</string>
+    <string name="bula_link_oficial">Abrir a bula oficial na Anvisa</string>
+    <string name="bula_do_cache">Sem internet: mostrando a última consulta, feita em %1$s.</string>
+    <string name="bula_erro_sem_internet">Sem internet, e este medicamento ainda não foi consultado antes. Conecte-se e toque em “Consultar bula” de novo.</string>
+    <string name="bula_erro_nao_encontrado">Não encontramos este medicamento no catálogo de bulas. Procure a bula oficial no site da Anvisa ou pergunte ao farmacêutico.</string>
+    <string name="bula_erro_servidor">O serviço de bulas não respondeu agora. Tente de novo em alguns instantes.</string>
+    <string name="bula_erro_nao_configurado">O endereço do servidor de bulas ainda não foi configurado no aplicativo.</string>
+</resources>

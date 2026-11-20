@@ -36,7 +36,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/fabAdicionar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/altura_botao"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/altura_botao"
         android:layout_marginTop="@dimen/margem"
         android:text="@string/medicamentos_adicionar" />
 </LinearLayout>
