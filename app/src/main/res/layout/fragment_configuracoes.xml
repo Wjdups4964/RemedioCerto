@@ -17,18 +17,163 @@
             android:layout_height="wrap_content"
             android:text="@string/config_titulo" />
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
+            style="@style/Estilo.Secao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/config_secao_conta" />
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/altura_botao"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/config_perfil" />
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_botao"
+                android:orientation="horizontal"
+                android:padding="@dimen/margem">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/config_perfil"
+                    android:textSize="@dimen/texto_corpo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="@string/seta"
+                    android:textColor="@color/rc_primaria"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnVinculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_botao"
+                android:orientation="horizontal"
+                android:padding="@dimen/margem">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/config_vinculo"
+                    android:textSize="@dimen/texto_corpo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="@string/seta"
+                    android:textColor="@color/rc_primaria"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Só para o idoso: mostra se os avisos dos remédios vão funcionar e, se não, como arrumar -->
+        <LinearLayout
+            android:id="@+id/secaoAvisos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            style="@style/Estilo.Secao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/config_secao_avisos" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margem">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/config_avisos_explica"
+                        android:textColor="@color/rc_texto_suave"
+                        android:textSize="@dimen/texto_corpo" />
+
+                    <TextView
+                        android:id="@+id/tvStatusNotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margem"
+                        android:textSize="@dimen/texto_corpo"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLigarNotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/aviso_notif_botao"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvStatusExato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margem"
+                        android:textSize="@dimen/texto_corpo"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPermitirExato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:minHeight="@dimen/altura_botao"
+                        android:text="@string/aviso_exato_botao"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/Estilo.Secao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/config_secao_leitura" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem">
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switchAcessibilidade"
@@ -43,7 +188,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margem">
+            android:layout_marginTop="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,18 +197,19 @@
                 android:padding="@dimen/margem">
 
                 <TextView
-                    style="@style/Estilo.Secao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/config_tema" />
+                    android:text="@string/config_tema"
+                    android:textSize="@dimen/texto_corpo"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButtonToggleGroup
                     android:id="@+id/toggleTema"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    app:selectionRequired="true"
                     android:orientation="vertical"
+                    app:selectionRequired="true"
                     app:singleSelection="true">
 
                     <com.google.android.material.button.MaterialButton
@@ -93,30 +239,55 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVinculo"
+        <TextView
+            style="@style/Estilo.Secao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/altura_botao"
-            android:layout_marginTop="@dimen/margem"
-            android:text="@string/config_vinculo" />
+            android:layout_marginTop="24dp"
+            android:text="@string/config_secao_mais" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnFarmacias"
-            style="@style/Widget.RemedioCerto.Button.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/altura_botao"
             android:layout_marginTop="8dp"
-            android:text="@string/config_farmacias" />
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_botao"
+                android:orientation="horizontal"
+                android:padding="@dimen/margem">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/config_farmacias"
+                    android:textSize="@dimen/texto_corpo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="@string/seta"
+                    android:textColor="@color/rc_primaria"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSair"
             style="@style/Widget.RemedioCerto.Button.Texto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:minHeight="@dimen/altura_botao"
-            android:layout_marginTop="8dp"
             android:text="@string/config_sair" />
     </LinearLayout>
 </ScrollView>

@@ -54,7 +54,7 @@ fun valeHoje(m: Medicamento, agora: Long): Boolean {
     return dias % m.intervaloDias.coerceAtLeast(1) == 0
 }
 
-private fun previstoNoDia(horario: String, agora: Long): Long? {
+internal fun previstoNoDia(horario: String, agora: Long): Long? {
     val partes = horario.split(":")
     val hora = partes.getOrNull(0)?.toIntOrNull() ?: return null
     val minuto = partes.getOrNull(1)?.toIntOrNull() ?: return null

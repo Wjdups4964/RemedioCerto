@@ -37,13 +37,9 @@
     <string name="cadastro_nome">Nome do medicamento</string>
     <string name="cadastro_dose">Dose</string>
     <string name="cadastro_dose_ajuda">Exemplo: 500 mg</string>
-    <string name="cadastro_forma">Forma (comprimido, gotas…)</string>
     <string name="cadastro_observacoes">Observações</string>
-    <string name="cadastro_horarios">Horários</string>
     <string name="cadastro_horario">Horário</string>
     <string name="cadastro_horario_titulo">Escolha o horário da dose</string>
-    <string name="cadastro_continuo">Tratamento contínuo</string>
-    <string name="cadastro_todos_dias">Todos os dias da semana</string>
     <string name="cadastro_adiamento">Adiar lembrete por</string>
     <string name="cadastro_5min">5 minutos</string>
     <string name="cadastro_10min">10 minutos</string>
@@ -100,8 +96,6 @@
     <string name="alarme_tomei_msg">Dose registrada como tomada.</string>
     <string name="alarme_adiar_msg">Lembrete adiado.</string>
 
-    <string name="entrada_erro_login">Não foi possível entrar. Verifique a internet e tente de novo.</string>
-    <string name="entrada_conectando">Conectando… toque de novo em instantes.</string>
 
     <!-- Visual novo -->
     <string name="logo_emoji">💊</string>
@@ -152,10 +146,6 @@
     <string name="cadastro_dias_a_cada">De vez em quando (ex.: 7 em 7 dias = uma vez por semana)</string>
     <string name="cadastro_dias_quantos">Número de dias</string>
     <string name="cadastro_dias_quantos_ajuda">Repetir a cada quantos dias?</string>
-    <string name="cadastro_duracao_titulo">Por quanto tempo</string>
-    <string name="cadastro_duracao_continuo">Uso contínuo (sem data para terminar)</string>
-    <string name="cadastro_duracao_dias">Só por alguns dias (ex.: antibiótico por 7 dias)</string>
-    <string name="cadastro_duracao_quantos">Quantos dias de tratamento?</string>
     <string name="cadastro_dias_invalido">Informe um número de 1 a 365.</string>
 
     <!-- Conta: entrar, criar conta, confirmar e-mail -->

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Títulos das seções da tela de Configurações -->
+    <string name="config_secao_conta">Minha conta</string>
+    <string name="config_secao_avisos">Avisos dos remédios</string>
+    <string name="config_secao_leitura">Leitura e aparência</string>
+    <string name="config_secao_mais">Mais</string>
+
+    <!-- Situação dos avisos (✓ = tudo certo, ✕ = precisa de atenção; o símbolo evita depender só da cor) -->
+    <string name="config_avisos_explica">Você recebe um aviso 10 minutos antes, 5 minutos antes e na hora de tomar cada remédio.</string>
+    <string name="config_notif_ligadas">✓ Notificações ligadas</string>
+    <string name="config_notif_desligadas">✕ Notificações desligadas: você não recebe os avisos</string>
+    <string name="config_exato_ok">✓ Avisos no minuto certo</string>
+    <string name="config_exato_falta">✕ Sem “Alarmes e lembretes”, os avisos podem atrasar alguns minutos</string>
+</resources>

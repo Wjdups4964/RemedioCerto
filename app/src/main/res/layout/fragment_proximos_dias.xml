@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margem">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        style="@style/Estilo.Titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/proximos_titulo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProximos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margem"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvVazio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margem"
+        android:text="@string/proximos_vazio"
+        android:textColor="@color/rc_texto_suave"
+        android:textSize="@dimen/texto_corpo"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVoltar"
+        style="@style/Widget.RemedioCerto.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem"
+        android:minHeight="@dimen/altura_botao"
+        android:text="@string/proximos_voltar" />
+</LinearLayout>
