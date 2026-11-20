@@ -62,7 +62,8 @@ BootReceiver ─► reagenda todos os alarmes
 - A `HojeFragment` permite confirmar uma dose pendente ou atrasada (RN04: dose só é "tomada" quando o usuário confirma).
 - Navegação com o Navigation Component: um único `nav_graph` e dois menus inferiores. Os IDs dos itens do menu devem ser iguais aos IDs dos destinos.
 - A `EntradaActivity` é uma Activity só, com os passos trocando dentro dela.
-- **A definir:** tempo de expiração do código de convite (RN10).
+- O código de convite tem 8 dígitos, vale 24 horas (RN10, constante `CONVITE_VALIDADE_HORAS`) e só pode ser usado uma vez. A validade e o uso único são conferidos pelo servidor nas regras do Firestore (`firestore.rules`), não só no app.
+- O familiar vinculado só **lê** medicamentos e registros do idoso (não vê dados pessoais) e perde o acesso na hora em que o vínculo é revogado.
 
 ## 2. Estrutura de pastas e arquivos
 
@@ -146,3 +147,9 @@ raiz do projeto/
    - Ative o login por e-mail e senha (Authentication) e crie o banco Firestore.
    - Publique as regras de segurança do Firestore (RNF14): só o dono grava seus dados e só familiares vinculados leem.
 3. Para testar o alarme, use um aparelho real e conceda as permissões de notificação e de alarmes exatos quando o app pedir (RF37).
+
+## 4. Web service (bulário) e regras do Firestore
+
+- `bulario-api/`: servidor próprio (Node, sem dependências) com a bula resumida de medicamentos comuns. Publicado na Vercel (Root Directory `bulario-api`). O app consome por Retrofit (`data/remote/bulario/`) e guarda a última bula consultada para funcionar sem internet. Veja `bulario-api/README.md`.
+- `BASE_URL` em `RetrofitProvider.kt` deve apontar para o endereço publicado.
+- `firestore.rules`: regras de segurança completas. Ao mudar, cole o arquivo em Firebase Console > Firestore Database > Regras e publique.

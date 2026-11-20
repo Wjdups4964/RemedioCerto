@@ -36,7 +36,8 @@
         android:id="@+id/btnTestarAlarme"
         style="@style/Widget.RemedioCerto.Button.Outlined"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/altura_botao"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/altura_botao"
         android:layout_marginTop="@dimen/margem"
         android:text="@string/hoje_testar_alarme" />
 </LinearLayout>

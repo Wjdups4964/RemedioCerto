@@ -12,16 +12,51 @@
         android:layout_height="wrap_content"
         android:text="@string/acompanhamento_titulo" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvIdoso"
+            style="@style/Estilo.Secao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTrocarIdoso"
+            style="@style/Widget.RemedioCerto.Button.Texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/acompanhamento_trocar"
+            android:visibility="gone" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvSomenteLeitura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margem"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_destaque"
         android:padding="@dimen/margem"
         android:text="@string/acompanhamento_somente_leitura"
         android:textColor="@color/rc_primaria_escura"
-        android:textSize="@dimen/texto_corpo" />
+        android:textSize="@dimen/texto_corpo"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvSemDoses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem"
+        android:text="@string/acompanhamento_sem_doses"
+        android:textSize="@dimen/texto_corpo"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDoses"
@@ -30,5 +65,30 @@
         android:layout_marginTop="@dimen/margem"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/grupoSemVinculo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSemVinculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/acompanhamento_sem_vinculo"
+            android:textSize="@dimen/texto_corpo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIrParaVinculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/altura_botao"
+            android:layout_marginTop="@dimen/margem"
+            android:text="@string/acompanhamento_ir_para_vinculo" />
+    </LinearLayout>
 </LinearLayout>

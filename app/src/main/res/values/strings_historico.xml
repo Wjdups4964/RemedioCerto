@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Resumo no alto do histórico: só os últimos 7 dias -->
+    <plurals name="historico_semana">
+        <item quantity="one">Últimos 7 dias: %1$d de %2$d dose tomada.</item>
+        <item quantity="other">Últimos 7 dias: %1$d de %2$d doses tomadas.</item>
+    </plurals>
+    <string name="historico_sem_semana">Últimos 7 dias: nenhuma dose registrada.</string>
+    <!-- Títulos dos dias e linha de cada dose -->
+    <string name="historico_hoje">Hoje, %1$s</string>
+    <string name="historico_ontem">Ontem, %1$s</string>
+    <string name="historico_dose_das">Dose das %1$s</string>
+</resources>

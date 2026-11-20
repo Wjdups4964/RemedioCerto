@@ -6,13 +6,23 @@ import com.example.remediocerto.data.Repositorios
 import com.example.remediocerto.data.model.Medicamento
 import com.example.remediocerto.data.model.TipoFrequencia
 import com.example.remediocerto.util.inicioDoDia
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -44,6 +54,23 @@ fun gerarHorarios(primeiraDose: String, intervaloHoras: Int): List<String> {
 class CadastroMedicamentoViewModel : ViewModel() {
 
     private val repositorio = Repositorios.medicamentos
+
+    // Sugestões de nomes enquanto a pessoa digita. Espera 0,3 s sem digitar antes de perguntar ao servidor,
+    // e descarta a resposta antiga se ela continuar digitando.
+    private val trechoDigitado = MutableStateFlow("")
+
+    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+    val sugestoes: SharedFlow<List<String>> = trechoDigitado
+        .debounce(300)
+        .map { it.trim() }
+        .distinctUntilChanged()
+        .mapLatest { Repositorios.bulario.sugerir(it) }
+        // SharedFlow (e não StateFlow): uma resposta igual à anterior também precisa chegar na tela.
+        .shareIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), replay = 1)
+
+    fun digitouNome(texto: String) {
+        trechoDigitado.value = texto
+    }
 
     // Horários escolhidos à mão (modo "horários fixos").
     private val _horarios = MutableStateFlow<List<String>>(emptyList())
@@ -108,7 +135,8 @@ class CadastroMedicamentoViewModel : ViewModel() {
 
     /**
      * @param intervaloDias 1 = todo dia; 7 = uma vez por semana; etc. (1 a 365)
-     * @param duracaoDias 0 = uso contínuo; 1 a 365 = por esse número de dias; -1 = valor inválido digitado
+     * @param duracaoDias 0 = uso contínuo; 1 em diante = quantos dias vão do início ao término (inclusive); -1 = término antes do início
+     * @param inicioEm primeiro dia do tratamento (qualquer instante do dia; vira o começo do dia)
      */
     fun salvar(
         nome: String,
@@ -118,6 +146,7 @@ class CadastroMedicamentoViewModel : ViewModel() {
         adiamentoMin: Int,
         intervaloDias: Int,
         duracaoDias: Int,
+        inicioEm: Long,
     ): Validacao {
         if (nome.isBlank()) return Validacao.SEM_NOME
 
@@ -127,10 +156,10 @@ class CadastroMedicamentoViewModel : ViewModel() {
             else _horarios.value
         if (horariosDoDia.isEmpty()) return Validacao.SEM_HORARIO
         if (intervaloDias !in 1..365) return Validacao.DIAS_INVALIDOS
-        if (duracaoDias !in 0..365) return Validacao.DURACAO_INVALIDA
+        if (duracaoDias !in 0..3650) return Validacao.DURACAO_INVALIDA
 
-        // Ao editar, o tratamento continua contando do dia em que começou.
-        val inicio = _carregado.value?.inicioEm?.takeIf { it > 0 } ?: inicioDoDia(System.currentTimeMillis())
+        // O início é a data escolhida na tela (por padrão, hoje).
+        val inicio = inicioDoDia(inicioEm)
 
         repositorio.salvar(
             Medicamento(

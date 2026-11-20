@@ -17,6 +17,7 @@
             android:text="@string/vinculo_titulo" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGerar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem">
@@ -36,7 +37,8 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGerarCodigo"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/altura_botao"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/altura_botao"
                     android:layout_marginTop="8dp"
                     android:text="@string/vinculo_gerar" />
 
@@ -52,10 +54,30 @@
                     android:textColor="@color/rc_primaria_escura"
                     android:textSize="@dimen/texto_alarme"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvValidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/texto_corpo"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCompartilhar"
+                    style="@style/Widget.RemedioCerto.Button.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/altura_botao"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/vinculo_compartilhar"
+                    android:visibility="gone" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardUsar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem">
@@ -73,6 +95,7 @@
                     android:text="@string/vinculo_usar_titulo" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCodigoConvite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -82,25 +105,35 @@
                         android:id="@+id/etCodigoConvite"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                    android:maxLength="12" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnVincular"
                     style="@style/Widget.RemedioCerto.Button.Outlined"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/altura_botao"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/altura_botao"
                     android:layout_marginTop="8dp"
                     android:text="@string/vinculo_vincular" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            android:id="@+id/tvListaTitulo"
             style="@style/Estilo.Secao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem"
             android:text="@string/vinculo_lista_titulo" />
+
+        <TextView
+            android:id="@+id/tvListaVazia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/texto_corpo" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvVinculos"

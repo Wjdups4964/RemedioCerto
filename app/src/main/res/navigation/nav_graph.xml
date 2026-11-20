@@ -78,7 +78,11 @@
         android:id="@+id/acompanhamentoFragment"
         android:name="com.example.remediocerto.ui.acompanhamento.AcompanhamentoFragment"
         android:label="@string/nav_acompanhamento"
-        tools:layout="@layout/fragment_acompanhamento" />
+        tools:layout="@layout/fragment_acompanhamento">
+        <action
+            android:id="@+id/action_acompanhamento_to_vinculo"
+            app:destination="@id/vinculoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/farmaciasFragment"

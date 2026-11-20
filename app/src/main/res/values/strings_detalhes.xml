@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tela de detalhes do medicamento: uma informação por linha -->
+    <string name="detalhe_dose">Dose</string>
+    <string name="detalhe_horarios">Horários</string>
+    <string name="detalhe_dias">Dias</string>
+    <string name="detalhe_periodo">Período</string>
+    <string name="detalhe_forma">Forma</string>
+    <string name="detalhe_observacoes">Observações</string>
+    <string name="detalhe_todo_dia">Todos os dias</string>
+    <string name="detalhe_a_cada_dias">A cada %1$d dias</string>
+    <string name="detalhe_intervalo_horas">A cada %1$d horas (%2$s)</string>
+    <string name="detalhe_periodo_fim">De %1$s até %2$s</string>
+    <string name="detalhe_periodo_so_dias">Por %1$d dias</string>
+    <string name="detalhe_periodo_continuo_desde">Uso contínuo, desde %1$s</string>
+    <string name="detalhe_periodo_continuo">Uso contínuo</string>
+    <string name="detalhe_abrir_bula_erro">Não foi possível abrir o endereço da bula neste aparelho.</string>
+</resources>

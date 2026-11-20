@@ -15,7 +15,18 @@ import com.example.remediocerto.data.model.Medicamento
 import com.example.remediocerto.data.model.TipoFrequencia
 import com.example.remediocerto.databinding.FragmentCadastroMedicamentoBinding
 import com.example.remediocerto.util.coletar
+import com.example.remediocerto.util.diasDeTomar
+import com.example.remediocerto.util.diasEntre
+import com.example.remediocerto.util.formatarDiaLocal
+import com.example.remediocerto.util.formatarDiaMes
+import com.example.remediocerto.util.inicioDoDia
+import com.example.remediocerto.util.localParaUtc
+import com.example.remediocerto.util.somarDias
+import com.example.remediocerto.util.utcParaLocal
 import com.google.android.material.chip.Chip
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.util.Locale
@@ -33,8 +44,28 @@ class CadastroMedicamentoFragment : Fragment() {
 
     private val viewModel: CadastroMedicamentoViewModel by viewModels()
 
+
+    // Período do tratamento: dia de início (meia-noite local) e dia de término previsto (0 = sem término).
+    private var inicioMs = inicioDoDia(System.currentTimeMillis())
+    private var fimMs = 0L
+
+    // Forma escolhida (texto que será salvo). Medicamentos antigos podem ter uma forma digitada à mão,
+    // que não está nos botões: ela é mantida até a pessoa escolher outra.
+    private var forma = ""
+
     private var hora = 8
     private var minuto = 0
+
+    // Chip da forma -> texto do botão. O mapa guarda o id do texto (R.string) para trocar de idioma sem quebrar.
+    private val formasPorChip = mapOf(
+        R.id.chipFormaComprimido to R.string.forma_comprimido,
+        R.id.chipFormaCapsula to R.string.forma_capsula,
+        R.id.chipFormaGotas to R.string.forma_gotas,
+        R.id.chipFormaXarope to R.string.forma_xarope,
+        R.id.chipFormaInjecao to R.string.forma_injecao,
+        R.id.chipFormaPomada to R.string.forma_pomada,
+        R.id.chipFormaOutro to R.string.forma_outro,
+    )
 
     // Chip escolhido -> intervalo em horas. Só valores que dividem 24, para os horários se repetirem todo dia.
     private val intervalos = mapOf(
@@ -96,15 +127,119 @@ class CadastroMedicamentoFragment : Fragment() {
 
         binding.rgDias.setOnCheckedChangeListener { _, id ->
             binding.tilIntervaloDias.isVisible = id == R.id.rbACadaDias
+            atualizarPeriodo()
         }
         binding.rgDuracao.setOnCheckedChangeListener { _, id ->
-            binding.tilDuracaoDias.isVisible = id == R.id.rbPorDias
+            // Ao escolher "tem data para terminar", sugere 7 dias (o mais comum em antibiótico).
+            if (id == R.id.rbPorDias && fimMs < inicioMs) fimMs = somarDias(inicioMs, 6)
+            binding.tilTermino.isVisible = id == R.id.rbPorDias
+            atualizarPeriodo()
         }
 
-        binding.etNome.doAfterTextChanged { binding.tilNome.error = null }
-        binding.etIntervaloDias.doAfterTextChanged { binding.tilIntervaloDias.error = null }
-        binding.etDuracaoDias.doAfterTextChanged { binding.tilDuracaoDias.error = null }
+        configurarSugestoesDeNome()
+        binding.chipsForma.setOnCheckedStateChangeListener { _, ids ->
+            forma = ids.firstOrNull()?.let { formasPorChip[it] }?.let { getString(it) }.orEmpty()
+        }
+        binding.etIntervaloDias.doAfterTextChanged {
+            binding.tilIntervaloDias.error = null
+            atualizarPeriodo()
+        }
+        binding.etInicio.setOnClickListener { escolherInicio() }
+        binding.etTermino.setOnClickListener { escolherTermino() }
+        atualizarPeriodo()
         binding.btnSalvar.setOnClickListener { salvar() }
+    }
+
+    /**
+     * Mostra nomes de medicamentos enquanto a pessoa digita, para ela escolher em vez de escrever tudo
+     * (e errar). A lista vem do servidor; sem internet não aparece nada e o campo segue aceitando texto livre.
+     * Quando o texto digitado já é um nome completo da lista, a lista fecha.
+     */
+    private fun configurarSugestoesDeNome() {
+        val adaptador = SugestoesAdapter(requireContext())
+        binding.etNome.setAdapter(adaptador)
+
+        // Quando a pessoa toca numa sugestão, o texto muda sozinho: isso não deve abrir a lista de novo.
+        var escolhido: String? = null
+        binding.etNome.setOnItemClickListener { _, _, posicao, _ ->
+            escolhido = adaptador.getItem(posicao)
+        }
+        binding.etNome.doAfterTextChanged { texto ->
+            binding.tilNome.error = null
+            viewModel.digitouNome(texto?.toString().orEmpty())
+        }
+        coletar(viewModel.sugestoes) { lista ->
+            adaptador.trocar(lista)
+            val atual = binding.etNome.text?.toString().orEmpty()
+            val nomeCompleto = lista.any { mesmoNome(it, atual) }
+            val mostrar = lista.isNotEmpty() && !nomeCompleto && atual != escolhido &&
+                binding.etNome.hasFocus() && atual.trim().length >= 2
+            if (mostrar) binding.etNome.showDropDown() else binding.etNome.dismissDropDown()
+        }
+    }
+
+    private fun escolherInicio() {
+        val seletor = MaterialDatePicker.Builder.datePicker()
+            .setTitleText(R.string.cadastro_periodo_inicio)
+            .setSelection(localParaUtc(inicioMs))
+            .build()
+        seletor.addOnPositiveButtonClickListener {
+            inicioMs = utcParaLocal(it)
+            if (fimMs in 1 until inicioMs) fimMs = inicioMs // o término nunca fica antes do início
+            binding.tilTermino.error = null
+            atualizarPeriodo()
+        }
+        seletor.show(childFragmentManager, "seletor_inicio")
+    }
+
+    private fun escolherTermino() {
+        val limite = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointForward.from(localParaUtc(inicioMs))) // só do início em diante
+            .build()
+        val seletor = MaterialDatePicker.Builder.datePicker()
+            .setTitleText(R.string.cadastro_periodo_termino)
+            .setCalendarConstraints(limite)
+            .setSelection(localParaUtc(maxOf(fimMs, inicioMs)))
+            .build()
+        seletor.addOnPositiveButtonClickListener {
+            fimMs = utcParaLocal(it)
+            binding.tilTermino.error = null
+            atualizarPeriodo()
+        }
+        seletor.show(childFragmentManager, "seletor_termino")
+    }
+
+    /** Mostra as datas nos campos, uma frase com o resumo do período e, se for o caso, os próximos dias de tomar. */
+    private fun atualizarPeriodo() {
+        val comFim = binding.rgDuracao.checkedRadioButtonId == R.id.rbPorDias
+        binding.etInicio.setText(formatarDiaLocal(inicioMs))
+        if (fimMs > 0) binding.etTermino.setText(formatarDiaLocal(fimMs))
+
+        binding.tvPeriodo.text = if (comFim && fimMs >= inicioMs) {
+            val dias = diasEntre(inicioMs, fimMs) + 1
+            getString(
+                R.string.cadastro_periodo_resumo_fim,
+                formatarDiaLocal(inicioMs),
+                formatarDiaLocal(fimMs),
+                resources.getQuantityString(R.plurals.cadastro_periodo_dias, dias, dias),
+            )
+        } else {
+            getString(R.string.cadastro_periodo_resumo_continuo, formatarDiaLocal(inicioMs))
+        }
+
+        // "De vez em quando": mostra quais são os dias para a pessoa conferir (ex.: 20/11, 27/11, 04/12…).
+        val intervalo = binding.etIntervaloDias.text?.toString()?.toIntOrNull() ?: 0
+        val aCada = binding.rgDias.checkedRadioButtonId == R.id.rbACadaDias && intervalo in 2..365
+        binding.tvDiasPrevia.isVisible = aCada
+        if (aCada) {
+            val fim = if (comFim && fimMs >= inicioMs) fimMs else 0L
+            val dias = diasDeTomar(inicioMs, intervalo, fim, quantidade = 4)
+            val acabou = fim > 0 && dias.size < 4
+            binding.tvDiasPrevia.text = getString(
+                if (acabou) R.string.cadastro_dias_previa_fim else R.string.cadastro_dias_previa,
+                dias.joinToString(", ") { formatarDiaMes(it) },
+            )
+        }
     }
 
     private fun mostrarModo(tipo: TipoFrequencia) {
@@ -118,7 +253,9 @@ class CadastroMedicamentoFragment : Fragment() {
     private fun preencher(m: Medicamento) {
         binding.etNome.setText(m.nome)
         binding.etDose.setText(m.dose)
-        binding.etForma.setText(m.forma)
+        forma = m.forma
+        formasPorChip.entries.firstOrNull { semAcentoMinusculo(getString(it.value)) == semAcentoMinusculo(m.forma) }
+            ?.let { binding.chipsForma.check(it.key) }
         binding.etObservacoes.setText(m.observacoes)
         binding.rgAdiamento.check(
             when (m.adiamentoMin) {
@@ -131,10 +268,12 @@ class CadastroMedicamentoFragment : Fragment() {
             binding.rgDias.check(R.id.rbACadaDias)
             binding.etIntervaloDias.setText(m.intervaloDias.toString())
         }
+        inicioMs = if (m.inicioEm > 0) inicioDoDia(m.inicioEm) else inicioDoDia(System.currentTimeMillis())
         if (m.duracaoDias > 0) {
+            fimMs = somarDias(inicioMs, m.duracaoDias - 1)
             binding.rgDuracao.check(R.id.rbPorDias)
-            binding.etDuracaoDias.setText(m.duracaoDias.toString())
         }
+        atualizarPeriodo()
     }
 
     private fun mostrarHorarios(horarios: List<String>) {
@@ -163,20 +302,21 @@ class CadastroMedicamentoFragment : Fragment() {
             if (binding.rgDias.checkedRadioButtonId == R.id.rbACadaDias)
                 binding.etIntervaloDias.text?.toString()?.toIntOrNull() ?: 0
             else 1
-        // "Uso contínuo" = 0. Em "por N dias", vazio ou 0 vira -1 (inválido).
+        // "Uso contínuo" = 0. Com data de término: dias do início ao término, contando os dois. Término antes do início = -1.
         val duracaoDias =
             if (binding.rgDuracao.checkedRadioButtonId == R.id.rbPorDias)
-                binding.etDuracaoDias.text?.toString()?.toIntOrNull()?.takeIf { it >= 1 } ?: -1
+                if (fimMs < inicioMs) -1 else diasEntre(inicioMs, fimMs) + 1
             else 0
 
         val resultado = viewModel.salvar(
             nome = binding.etNome.text?.toString().orEmpty(),
             dose = binding.etDose.text?.toString().orEmpty(),
-            forma = binding.etForma.text?.toString().orEmpty(),
+            forma = forma,
             observacoes = binding.etObservacoes.text?.toString().orEmpty(),
             adiamentoMin = adiamento,
             intervaloDias = intervaloDias,
             duracaoDias = duracaoDias,
+            inicioEm = inicioMs,
         )
         when (resultado) {
             Validacao.SEM_NOME -> {
@@ -188,7 +328,7 @@ class CadastroMedicamentoFragment : Fragment() {
             Validacao.DIAS_INVALIDOS ->
                 binding.tilIntervaloDias.error = getString(R.string.cadastro_dias_invalido)
             Validacao.DURACAO_INVALIDA ->
-                binding.tilDuracaoDias.error = getString(R.string.cadastro_dias_invalido)
+                binding.tilTermino.error = getString(R.string.cadastro_termino_invalido)
             Validacao.OK -> {
                 binding.btnSalvar.isEnabled = false // evita toque duplo
                 Toast.makeText(requireContext(), R.string.cadastro_salvo, Toast.LENGTH_SHORT).show()
@@ -219,3 +359,9 @@ class CadastroMedicamentoFragment : Fragment() {
         _binding = null
     }
 }
+
+/** "Cápsula" e "capsula" contam como a mesma forma. */
+private fun semAcentoMinusculo(texto: String): String =
+    java.text.Normalizer.normalize(texto.trim(), java.text.Normalizer.Form.NFD)
+        .replace(Regex("\\p{Mn}+"), "")
+        .lowercase()

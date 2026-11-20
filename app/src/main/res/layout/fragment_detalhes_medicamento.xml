@@ -41,10 +41,11 @@
                     android:id="@+id/tvDoseHorarios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/rc_texto_suave"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="@color/rc_texto"
                     android:textSize="@dimen/texto_corpo"
-                    tools:text="50 mg · 08:00 e 20:00" />
+                    tools:text="Dose: 50 mg\nHorários: 08:00, 20:00\nDias: Todos os dias\nPeríodo: Uso contínuo" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -76,9 +77,21 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBulaOficial"
+            style="@style/Widget.RemedioCerto.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margem"
+            android:minHeight="@dimen/altura_botao"
+            android:text="@string/bula_link_oficial"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConsultarBula"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/altura_botao"
             android:layout_marginTop="@dimen/margem"
             android:text="@string/detalhes_consultar_bula" />
 
@@ -86,7 +99,8 @@
             android:id="@+id/btnEditar"
             style="@style/Widget.RemedioCerto.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/altura_botao"
             android:layout_marginTop="8dp"
             android:text="@string/detalhes_editar" />
 
@@ -94,7 +108,8 @@
             android:id="@+id/btnApagar"
             style="@style/Widget.RemedioCerto.Button.Texto"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/altura_botao"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/altura_botao"
             android:layout_marginTop="8dp"
             android:text="@string/detalhes_apagar"
             android:textColor="@color/rc_perdida" />
@@ -105,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem"
             android:text="@string/aviso_medico"
-            android:textColor="@color/rc_texto_suave" />
+            android:textColor="@color/rc_texto_suave"
+            android:textSize="@dimen/texto_corpo" />
     </LinearLayout>
 </ScrollView>

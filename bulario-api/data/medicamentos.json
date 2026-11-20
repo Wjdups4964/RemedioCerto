@@ -217,5 +217,86 @@
     "classe": "Anti-histamínico",
     "indicacao": "Sintomas de alergia, como rinite, coceira e urticária.",
     "outrosNomes": ["claritin"]
+  },
+  {
+    "id": "cimegripe",
+    "nome": "Cimegripe",
+    "principioAtivo": "Paracetamol + maleato de clorfeniramina + cloridrato de fenilefrina",
+    "classe": "Antigripal (analgésico, antialérgico e descongestionante)",
+    "indicacao": "Alívio dos sintomas de gripes e resfriados: nariz entupido, coriza, febre, dor de cabeça e dores no corpo.",
+    "observacao": "Pode dar sono. Quem tem pressão alta, doença do coração ou glaucoma deve falar com o médico antes de usar. Não tome junto com outros remédios que tenham paracetamol nem com bebida alcoólica.",
+    "outrosNomes": ["antigripal", "resfriado"]
+  },
+  {
+    "id": "resfenol",
+    "nome": "Resfenol",
+    "principioAtivo": "Paracetamol + maleato de clorfeniramina + cloridrato de fenilefrina",
+    "classe": "Antigripal (analgésico, antialérgico e descongestionante)",
+    "indicacao": "Alívio dos sintomas de gripes e resfriados: nariz entupido, coriza, febre, dor de cabeça e dores no corpo.",
+    "observacao": "Pode dar sono. Quem tem pressão alta, doença do coração ou glaucoma deve falar com o médico antes de usar. Não tome junto com outros remédios que tenham paracetamol nem com bebida alcoólica.",
+    "outrosNomes": ["antigripal", "resfriado"]
+  },
+  {
+    "id": "benegrip",
+    "nome": "Benegrip",
+    "principioAtivo": "Dipirona + maleato de clorfeniramina + cafeína",
+    "classe": "Antigripal (analgésico, antialérgico e estimulante)",
+    "indicacao": "Alívio dos sintomas de gripes e resfriados, como dor de cabeça, febre e sintomas de alergia.",
+    "observacao": "Pode dar sono e boca seca. Não tome junto com bebida alcoólica. Vem com comprimidos de duas cores (amarelo e verde): siga a orientação da bula.",
+    "outrosNomes": ["antigripal", "resfriado"]
+  },
+  {
+    "id": "dorflex",
+    "nome": "Dorflex",
+    "principioAtivo": "Dipirona + citrato de orfenadrina + cafeína",
+    "classe": "Analgésico e relaxante muscular",
+    "indicacao": "Alívio da dor associada a contraturas musculares, incluindo dor de cabeça causada por tensão.",
+    "observacao": "Pode causar sono ou tontura. Quem tem aumento da próstata ou fraqueza muscular por doença (miastenia grave) deve falar com o médico antes.",
+    "outrosNomes": ["relaxante muscular"]
+  },
+  {
+    "id": "neosaldina",
+    "nome": "Neosaldina",
+    "principioAtivo": "Dipirona + mucato de isometepteno + cafeína",
+    "classe": "Analgésico e antiespasmódico",
+    "indicacao": "Dores de cabeça, incluindo enxaqueca, e cólicas.",
+    "observacao": "Contém cafeína: se você é muito sensível a ela, não tome à noite. Não tome durante crises de pressão alta nem junto com bebida alcoólica.",
+    "outrosNomes": []
+  },
+  {
+    "id": "buscopan",
+    "nome": "Buscopan",
+    "principioAtivo": "Butilbrometo de escopolamina",
+    "classe": "Antiespasmódico",
+    "indicacao": "Cólicas e dores na barriga causadas por contrações (espasmos) do estômago, do intestino e das vias urinárias.",
+    "observacao": "Idosos são mais sensíveis aos efeitos, como boca seca e dificuldade para urinar. Quem tem glaucoma ou aumento da próstata com dificuldade para urinar deve falar com o médico antes.",
+    "outrosNomes": []
+  },
+  {
+    "id": "buscopan-composto",
+    "nome": "Buscopan Composto",
+    "principioAtivo": "Butilbrometo de escopolamina + dipirona",
+    "classe": "Antiespasmódico e analgésico",
+    "indicacao": "Cólicas e dores na barriga: intestinais, do estômago, urinárias, das vias biliares e menstruais.",
+    "observacao": "Idosos devem usar dose menor: siga a orientação do médico. Quem tem glaucoma ou aumento da próstata com dificuldade para urinar não deve usar. Não use em doses altas nem por muito tempo sem receita.",
+    "outrosNomes": []
+  },
+  {
+    "id": "simeticona",
+    "nome": "Simeticona",
+    "principioAtivo": "Simeticona",
+    "classe": "Antigases",
+    "indicacao": "Excesso de gases no aparelho digestivo, que causa barriga inchada, desconforto e cólica.",
+    "observacao": "Não é absorvida pelo corpo: age só dentro do aparelho digestivo. Se a dor na barriga for forte ou durar mais de 36 horas, procure um médico.",
+    "outrosNomes": ["luftal"]
+  },
+  {
+    "id": "sal-de-fruta-eno",
+    "nome": "Sal de fruta Eno",
+    "principioAtivo": "Bicarbonato de sódio + carbonato de sódio + ácido cítrico",
+    "classe": "Antiácido",
+    "indicacao": "Azia, má digestão e outros desconfortos do estômago causados por excesso de acidez.",
+    "observacao": "Contém bastante sódio (sal): quem faz dieta com pouco sal deve falar com o médico antes. É para adultos e crianças acima de 12 anos.",
+    "outrosNomes": ["eno", "sal de frutas", "antiacido"]
   }
 ]

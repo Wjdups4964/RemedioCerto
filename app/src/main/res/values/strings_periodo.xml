@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Período do tratamento: início e previsão de término -->
+    <string name="cadastro_periodo_titulo">Período do tratamento</string>
+    <string name="cadastro_periodo_inicio">Começa em</string>
+    <string name="cadastro_periodo_termino">Previsão de término</string>
+    <string name="cadastro_periodo_continuo">Uso contínuo (sem data para terminar)</string>
+    <string name="cadastro_periodo_com_fim">Tem data para terminar (ex.: antibiótico)</string>
+    <string name="cadastro_periodo_resumo_continuo">Começa em %1$s e segue sem data para terminar.</string>
+    <string name="cadastro_periodo_resumo_fim">Começa em %1$s e termina em %2$s (%3$s).</string>
+    <plurals name="cadastro_periodo_dias">
+        <item quantity="one">%d dia</item>
+        <item quantity="other">%d dias</item>
+    </plurals>
+    <string name="cadastro_termino_invalido">O término precisa ser no mesmo dia do início ou depois.</string>
+
+    <!-- Em quais dias: explicação e prévia dos dias -->
+    <string name="cadastro_dias_ajuda">Todo dia: para remédio de uso diário. De vez em quando: para o que não é todo dia (ex.: uma vez por semana).</string>
+    <string name="cadastro_dias_previa">Você toma nos dias: %1$s…</string>
+    <string name="cadastro_dias_previa_fim">Você toma nos dias: %1$s.</string>
+    <string name="resumo_ate">até %1$s</string>
+</resources>

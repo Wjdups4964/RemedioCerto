@@ -34,7 +34,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="@color/rc_texto_suave"
                 android:textSize="@dimen/texto_corpo"
-                tools:text="03/11 · 08:00" />
+                tools:text="Dose das 08:00" />
         </LinearLayout>
 
         <TextView

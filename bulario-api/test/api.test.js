@@ -4,7 +4,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const http = require('node:http');
 const { rotear } = require('../server');
-const { medicamentos } = require('../lib/catalogo');
+const { medicamentos, buscar, obter } = require('../lib/catalogo');
 
 function subir() {
   return new Promise((resolve) => {
@@ -107,4 +107,28 @@ test('API de bulas', async (t) => {
     assert.equal((await pedir(servidor, '/api/outra')).status, 404);
     assert.equal((await pedir(servidor, '/api/bulas?nome=losartana', 'POST')).status, 405);
   });
+});
+
+test('remédios de balcão mais vendidos estão no catálogo', () => {
+  const casos = [
+    ['cimegripe', 'cimegripe'],
+    ['RESFENOL', 'resfenol'],
+    ['benegrip', 'benegrip'],
+    ['dorflex', 'dorflex'],
+    ['neosaldina', 'neosaldina'],
+    ['luftal', 'simeticona'], // nome comercial acha o genérico
+    ['eno', 'sal-de-fruta-eno'],
+  ];
+  for (const [termo, id] of casos) {
+    assert.ok(buscar(termo, 1).itens.some((i) => i.id === id), `"${termo}" deveria achar ${id}`);
+  }
+  assert.equal(buscar('buscopan', 1).total, 2, 'Buscopan e Buscopan Composto');
+  assert.equal(buscar('antigripal', 1).total, 3, 'Cimegripe, Resfenol e Benegrip');
+});
+
+test('antigripais com descongestionante avisam sobre sono e pressão alta', () => {
+  const cimegripe = obter('cimegripe');
+  assert.match(cimegripe.observacao, /sono/);
+  assert.match(cimegripe.observacao, /pressão alta/);
+  assert.match(cimegripe.urlBulaOficial, /nomeProduto=Cimegripe$/);
 });
