@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Canal de notificações (aparece nas configurações do Android) -->
+    <string name="notif_canal_nome">Lembretes de medicamento</string>
+    <string name="notif_canal_descricao">Avisos antes da hora de tomar cada remédio.</string>
+
+    <!-- Notificação de uma dose -->
+    <string name="notif_titulo_antes">Daqui a %1$d minutos: %2$s</string>
+    <string name="notif_titulo_agora">Hora de tomar: %1$s</string>
+    <string name="notif_texto_com_dose">%1$s · às %2$s</string>
+    <string name="notif_texto_sem_dose">Às %1$s</string>
+
+    <!-- Pedido da permissão "Alarmes e lembretes" (Android 12 ou mais novo) -->
+    <string name="notif_exato_titulo">Avisos na hora certa</string>
+    <string name="notif_exato_msg">Para o aviso chegar no minuto certo, permita “Alarmes e lembretes” para o RemédioCerto na próxima tela.</string>
+    <string name="notif_permitir">Permitir</string>
+    <string name="notif_agora_nao">Agora não</string>
+</resources>

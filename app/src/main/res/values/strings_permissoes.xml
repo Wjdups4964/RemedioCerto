@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Aviso fixo na tela Hoje quando as notificações estão desligadas -->
+    <string name="aviso_notif_desligadas">As notificações estão desligadas. Sem elas, você não recebe o aviso na hora de tomar o remédio.</string>
+    <string name="aviso_notif_botao">Ligar notificações</string>
+    <string name="aviso_exato_botao">Permitir alarmes</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_proximos_dias">Próximos dias</string>
+    <string name="proximos_titulo">Próximos dias</string>
+    <string name="proximos_botao">Ver próximos dias</string>
+    <string name="proximos_voltar">Voltar</string>
+    <string name="proximos_vazio">Cadastre um medicamento na aba Remédios para ver os próximos dias.</string>
+
+    <!-- Títulos das duas partes da tela -->
+    <string name="proximos_secao_terminam">Tratamentos com data para acabar</string>
+    <string name="proximos_secao_dia_a_dia">Dia a dia</string>
+
+    <!-- Quando cada tratamento acaba (%1$s = data, ex.: 23/11) -->
+    <string name="proximos_termina_hoje">Termina hoje (%1$s)</string>
+    <string name="proximos_termina_amanha">Termina amanhã (%1$s)</string>
+    <string name="proximos_comeca_ate">Começa em %1$s · até %2$s</string>
+    <string name="proximos_faltam_dias">Até %1$s · faltam %2$d dias</string>
+
+    <!-- Lista dia a dia -->
+    <string name="proximos_amanha">Amanhã, %1$s</string>
+    <string name="proximos_ultimo_dia">Último dia do tratamento</string>
+    <string name="proximos_sem_doses">Nenhum remédio neste dia.</string>
+</resources>

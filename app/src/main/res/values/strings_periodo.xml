@@ -18,5 +18,4 @@
     <string name="cadastro_dias_ajuda">Todo dia: para remédio de uso diário. De vez em quando: para o que não é todo dia (ex.: uma vez por semana).</string>
     <string name="cadastro_dias_previa">Você toma nos dias: %1$s…</string>
     <string name="cadastro_dias_previa_fim">Você toma nos dias: %1$s.</string>
-    <string name="resumo_ate">até %1$s</string>
 </resources>

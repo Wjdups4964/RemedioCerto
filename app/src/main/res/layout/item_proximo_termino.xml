@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Um remédio com data para acabar: nome e "Até 23/11 · faltam 3 dias". -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/altura_botao"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Amoxicilina" />
+
+        <TextView
+            android:id="@+id/tvQuando"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/rc_texto_suave"
+            android:textSize="@dimen/texto_corpo"
+            tools:text="Até 23/11 · faltam 3 dias" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uma dose de um dia futuro: horário, remédio e, no último dia do tratamento, uma etiqueta. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/altura_botao"
+        android:orientation="horizontal"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/tvHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hora"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/rc_sobre_primaria"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold"
+            tools:text="08:00" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margem"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Losartana" />
+
+            <TextView
+                android:id="@+id/tvDose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/rc_texto_suave"
+                android:textSize="@dimen/texto_corpo"
+                tools:text="50 mg" />
+
+            <TextView
+                android:id="@+id/tvUltimoDia"
+                style="@style/Estilo.Pilula"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/proximos_ultimo_dia"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

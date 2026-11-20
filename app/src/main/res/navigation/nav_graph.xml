@@ -9,7 +9,17 @@
         android:id="@+id/hojeFragment"
         android:name="com.example.remediocerto.ui.hoje.HojeFragment"
         android:label="@string/nav_hoje"
-        tools:layout="@layout/fragment_hoje" />
+        tools:layout="@layout/fragment_hoje">
+        <action
+            android:id="@+id/action_hoje_to_proximos_dias"
+            app:destination="@id/proximosDiasFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/proximosDiasFragment"
+        android:name="com.example.remediocerto.ui.hoje.ProximosDiasFragment"
+        android:label="@string/nav_proximos_dias"
+        tools:layout="@layout/fragment_proximos_dias" />
 
     <fragment
         android:id="@+id/medicamentosFragment"
