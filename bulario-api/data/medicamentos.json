@@ -1,0 +1,221 @@
+[
+  {
+    "id": "losartana",
+    "nome": "Losartana",
+    "principioAtivo": "Losartana potássica",
+    "classe": "Anti-hipertensivo (antagonista do receptor de angiotensina II)",
+    "indicacao": "Pressão alta (hipertensão), insuficiência cardíaca e proteção dos rins em pessoas com diabetes tipo 2.",
+    "outrosNomes": ["cozaar"]
+  },
+  {
+    "id": "enalapril",
+    "nome": "Enalapril",
+    "principioAtivo": "Maleato de enalapril",
+    "classe": "Anti-hipertensivo (inibidor da ECA)",
+    "indicacao": "Pressão alta e insuficiência cardíaca.",
+    "outrosNomes": ["renitec"]
+  },
+  {
+    "id": "captopril",
+    "nome": "Captopril",
+    "principioAtivo": "Captopril",
+    "classe": "Anti-hipertensivo (inibidor da ECA)",
+    "indicacao": "Pressão alta e insuficiência cardíaca.",
+    "outrosNomes": ["capoten"]
+  },
+  {
+    "id": "anlodipino",
+    "nome": "Anlodipino",
+    "principioAtivo": "Besilato de anlodipino",
+    "classe": "Anti-hipertensivo (bloqueador dos canais de cálcio)",
+    "indicacao": "Pressão alta e angina (dor no peito de origem cardíaca).",
+    "outrosNomes": ["amlodipino", "norvasc"]
+  },
+  {
+    "id": "hidroclorotiazida",
+    "nome": "Hidroclorotiazida",
+    "principioAtivo": "Hidroclorotiazida",
+    "classe": "Diurético (tiazídico)",
+    "indicacao": "Pressão alta e inchaço por retenção de líquidos.",
+    "outrosNomes": ["clorana"]
+  },
+  {
+    "id": "furosemida",
+    "nome": "Furosemida",
+    "principioAtivo": "Furosemida",
+    "classe": "Diurético (de alça)",
+    "indicacao": "Inchaço por retenção de líquidos (edema) e insuficiência cardíaca; também usada em alguns casos de pressão alta.",
+    "outrosNomes": ["lasix"]
+  },
+  {
+    "id": "espironolactona",
+    "nome": "Espironolactona",
+    "principioAtivo": "Espironolactona",
+    "classe": "Diurético (poupador de potássio)",
+    "indicacao": "Insuficiência cardíaca, inchaço por retenção de líquidos e pressão alta.",
+    "outrosNomes": ["aldactone"]
+  },
+  {
+    "id": "atenolol",
+    "nome": "Atenolol",
+    "principioAtivo": "Atenolol",
+    "classe": "Betabloqueador",
+    "indicacao": "Pressão alta, angina e alguns problemas do ritmo do coração.",
+    "outrosNomes": ["atenol"]
+  },
+  {
+    "id": "carvedilol",
+    "nome": "Carvedilol",
+    "principioAtivo": "Carvedilol",
+    "classe": "Betabloqueador",
+    "indicacao": "Insuficiência cardíaca, pressão alta e angina.",
+    "outrosNomes": ["coreg"]
+  },
+  {
+    "id": "metformina",
+    "nome": "Metformina",
+    "principioAtivo": "Cloridrato de metformina",
+    "classe": "Antidiabético oral (biguanida)",
+    "indicacao": "Diabetes tipo 2.",
+    "outrosNomes": ["glifage", "glucoformin"]
+  },
+  {
+    "id": "glibenclamida",
+    "nome": "Glibenclamida",
+    "principioAtivo": "Glibenclamida",
+    "classe": "Antidiabético oral (sulfonilureia)",
+    "indicacao": "Diabetes tipo 2.",
+    "outrosNomes": ["daonil"]
+  },
+  {
+    "id": "sinvastatina",
+    "nome": "Sinvastatina",
+    "principioAtivo": "Sinvastatina",
+    "classe": "Redutor de colesterol (estatina)",
+    "indicacao": "Colesterol alto e prevenção de problemas cardiovasculares.",
+    "outrosNomes": ["zocor"]
+  },
+  {
+    "id": "atorvastatina",
+    "nome": "Atorvastatina",
+    "principioAtivo": "Atorvastatina cálcica",
+    "classe": "Redutor de colesterol (estatina)",
+    "indicacao": "Colesterol alto e prevenção de problemas cardiovasculares.",
+    "outrosNomes": ["lipitor"]
+  },
+  {
+    "id": "acido-acetilsalicilico",
+    "nome": "Ácido acetilsalicílico (AAS)",
+    "principioAtivo": "Ácido acetilsalicílico",
+    "classe": "Analgésico e antiagregante plaquetário",
+    "indicacao": "Dor e febre. Em doses baixas, é usado na prevenção de infarto e AVC, somente quando o médico indicar.",
+    "outrosNomes": ["aas", "aspirina"]
+  },
+  {
+    "id": "varfarina",
+    "nome": "Varfarina",
+    "principioAtivo": "Varfarina sódica",
+    "classe": "Anticoagulante",
+    "indicacao": "Prevenção e tratamento de trombose e embolia.",
+    "observacao": "Exige acompanhamento médico com exames de sangue periódicos.",
+    "outrosNomes": ["marevan"]
+  },
+  {
+    "id": "omeprazol",
+    "nome": "Omeprazol",
+    "principioAtivo": "Omeprazol",
+    "classe": "Protetor do estômago (inibidor da bomba de prótons)",
+    "indicacao": "Azia, refluxo, gastrite e úlcera no estômago ou duodeno.",
+    "outrosNomes": ["losec"]
+  },
+  {
+    "id": "pantoprazol",
+    "nome": "Pantoprazol",
+    "principioAtivo": "Pantoprazol sódico",
+    "classe": "Protetor do estômago (inibidor da bomba de prótons)",
+    "indicacao": "Azia, refluxo, gastrite e úlcera no estômago ou duodeno.",
+    "outrosNomes": ["pantozol"]
+  },
+  {
+    "id": "levotiroxina",
+    "nome": "Levotiroxina",
+    "principioAtivo": "Levotiroxina sódica",
+    "classe": "Hormônio da tireoide",
+    "indicacao": "Hipotireoidismo (quando a tireoide produz hormônio de menos).",
+    "outrosNomes": ["puran t4", "synthroid"]
+  },
+  {
+    "id": "paracetamol",
+    "nome": "Paracetamol",
+    "principioAtivo": "Paracetamol",
+    "classe": "Analgésico e antitérmico",
+    "indicacao": "Dor e febre.",
+    "outrosNomes": ["tylenol", "acetaminofeno"]
+  },
+  {
+    "id": "dipirona",
+    "nome": "Dipirona",
+    "principioAtivo": "Dipirona sódica (metamizol)",
+    "classe": "Analgésico e antitérmico",
+    "indicacao": "Dor e febre.",
+    "outrosNomes": ["metamizol", "novalgina"]
+  },
+  {
+    "id": "ibuprofeno",
+    "nome": "Ibuprofeno",
+    "principioAtivo": "Ibuprofeno",
+    "classe": "Anti-inflamatório não esteroide",
+    "indicacao": "Dor, febre e inflamação.",
+    "outrosNomes": ["advil", "alivium"]
+  },
+  {
+    "id": "sertralina",
+    "nome": "Sertralina",
+    "principioAtivo": "Cloridrato de sertralina",
+    "classe": "Antidepressivo (inibidor seletivo da recaptação de serotonina)",
+    "indicacao": "Depressão, transtornos de ansiedade e transtorno obsessivo-compulsivo.",
+    "outrosNomes": ["zoloft"]
+  },
+  {
+    "id": "clonazepam",
+    "nome": "Clonazepam",
+    "principioAtivo": "Clonazepam",
+    "classe": "Benzodiazepínico (medicamento controlado)",
+    "indicacao": "Crises epilépticas e transtorno do pânico.",
+    "observacao": "É um medicamento controlado: só é vendido com receita especial e deve ser usado exatamente como o médico orientou.",
+    "outrosNomes": ["rivotril"]
+  },
+  {
+    "id": "amoxicilina",
+    "nome": "Amoxicilina",
+    "principioAtivo": "Amoxicilina tri-hidratada",
+    "classe": "Antibiótico (penicilina)",
+    "indicacao": "Infecções causadas por bactérias sensíveis a ela.",
+    "observacao": "Antibiótico só deve ser usado com receita, até o fim do tratamento indicado.",
+    "outrosNomes": ["amoxil"]
+  },
+  {
+    "id": "donepezila",
+    "nome": "Donepezila",
+    "principioAtivo": "Cloridrato de donepezila",
+    "classe": "Inibidor da colinesterase",
+    "indicacao": "Sintomas da doença de Alzheimer nas fases leve a moderada.",
+    "outrosNomes": ["eranz"]
+  },
+  {
+    "id": "alendronato",
+    "nome": "Alendronato",
+    "principioAtivo": "Alendronato de sódio",
+    "classe": "Bisfosfonato",
+    "indicacao": "Osteoporose.",
+    "outrosNomes": ["fosamax"]
+  },
+  {
+    "id": "loratadina",
+    "nome": "Loratadina",
+    "principioAtivo": "Loratadina",
+    "classe": "Anti-histamínico",
+    "indicacao": "Sintomas de alergia, como rinite, coceira e urticária.",
+    "outrosNomes": ["claritin"]
+  }
+]
