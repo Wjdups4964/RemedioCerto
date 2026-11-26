@@ -87,7 +87,7 @@
 
     <!-- Farmácias -->
     <string name="farmacias_titulo">Farmácias próximas</string>
-    <string name="farmacias_texto">Encontre farmácias perto da sua localização.</string>
+    <string name="farmacias_texto">Toque no botão para abrir o Maps já mostrando as farmácias perto de você.</string>
 
     <!-- Alarme -->
     <string name="alarme_titulo">Hora do remédio</string>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="farmacias_botao">Ver farmácias no Maps</string>
+    <string name="farmacias_dica">O mapa abre fora do RemédioCerto e usa a sua localização. É preciso ter internet e o GPS ligado.</string>
+    <string name="farmacias_sem_app">Não encontrei um aplicativo de mapas neste celular.</string>
+    <string name="farmacias_busca">farmácia</string>
+</resources>

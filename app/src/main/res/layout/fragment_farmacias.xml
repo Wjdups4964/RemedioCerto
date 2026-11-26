@@ -19,4 +19,21 @@
         android:layout_marginTop="@dimen/margem"
         android:text="@string/farmacias_texto"
         android:textSize="@dimen/texto_corpo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAbrirMapas"
+        style="@style/Widget.RemedioCerto.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem"
+        android:minHeight="@dimen/altura_botao"
+        android:text="@string/farmacias_botao" />
+
+    <TextView
+        android:id="@+id/tvDica"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margem"
+        android:text="@string/farmacias_dica"
+        android:textSize="16sp" />
 </LinearLayout>
