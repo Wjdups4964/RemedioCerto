@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Tema escuro: mesmos nomes do tema claro, com cores adaptadas. Os layouts não precisam mudar. -->
-    <color name="rc_primaria">#4FD1C2</color>
-    <color name="rc_primaria_escura">#A7EDE3</color>
-    <color name="rc_primaria_clara">#12443F</color>
-    <color name="rc_gradiente_fim">#0F8A7D</color>
-    <color name="rc_coral_claro">#4A2219</color>
-    <color name="rc_fundo">#0E1716</color>
-    <color name="rc_superficie">#172625</color>
-    <color name="rc_superficie_alta">#213836</color>
-    <color name="rc_texto">#E2F0EE</color>
-    <color name="rc_texto_suave">#A3BEBA</color>
-    <color name="rc_contorno">#2D4744</color>
-    <color name="rc_contorno_forte">#7FA19C</color>
-    <color name="rc_sobre_primaria">#00302B</color>
+    <!-- Tema escuro: cinzas neutros, com o verde-água só como detalhe suave.
+         Mesmos nomes do tema claro, então os layouts não precisam mudar. -->
+    <color name="rc_primaria">#7DBFB6</color>
+    <color name="rc_primaria_escura">#B4DAD4</color>
+    <color name="rc_primaria_clara">#2A3836</color>
+    <color name="rc_gradiente_inicio">#232B2A</color>
+    <color name="rc_gradiente_fim">#3A4846</color>
+    <color name="rc_sobre_gradiente_suave">#C9D6D4</color>
+    <color name="rc_coral">#C75B45</color>
+    <color name="rc_coral_claro">#3F2824</color>
+    <color name="rc_amarelo">#E0B84F</color>
+    <color name="rc_fundo">#121414</color>
+    <color name="rc_superficie">#1C1F1F</color>
+    <color name="rc_superficie_alta">#272B2B</color>
+    <color name="rc_texto">#E6E8E8</color>
+    <color name="rc_texto_suave">#A9B0AF</color>
+    <color name="rc_contorno">#2F3434</color>
+    <color name="rc_contorno_forte">#7F8887</color>
+    <color name="rc_sobre_primaria">#10201E</color>
 
-    <!-- Situação da dose -->
-    <color name="rc_tomada">#7ADBA3</color>
-    <color name="rc_tomada_fundo">#123424</color>
-    <color name="rc_adiada">#F2C14E</color>
-    <color name="rc_adiada_fundo">#3B2D0B</color>
-    <color name="rc_perdida">#FFB3AC</color>
-    <color name="rc_perdida_fundo">#4D1D20</color>
+    <!-- Situação da dose: tons mais calmos que no tema claro -->
+    <color name="rc_tomada">#8CCBA6</color>
+    <color name="rc_tomada_fundo">#1D2E25</color>
+    <color name="rc_adiada">#E3BE6A</color>
+    <color name="rc_adiada_fundo">#322A18</color>
+    <color name="rc_perdida">#F0B4AE</color>
+    <color name="rc_perdida_fundo">#3E2325</color>
 </resources>
