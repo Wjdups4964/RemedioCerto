@@ -62,8 +62,7 @@
 
     <!-- Configurações -->
     <string name="config_titulo">Configurações</string>
-    <string name="config_acessibilidade">Modo de acessibilidade (fonte grande e alto contraste)</string>
-    <string name="config_acessibilidade_alterada">Modo de acessibilidade alterado.</string>
+    <string name="config_acessibilidade">Modo de acessibilidade (letras grandes)</string>
     <string name="config_vinculo">Vínculo com familiar</string>
     <string name="config_farmacias">Farmácias próximas</string>
     <string name="config_sair">Sair</string>

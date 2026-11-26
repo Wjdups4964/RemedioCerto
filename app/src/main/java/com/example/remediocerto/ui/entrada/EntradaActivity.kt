@@ -1,5 +1,6 @@
 package com.example.remediocerto.ui.entrada
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.example.remediocerto.R
 import com.example.remediocerto.data.model.Perfil
 import com.example.remediocerto.databinding.ActivityEntradaBinding
 import com.example.remediocerto.ui.main.MainActivity
+import com.example.remediocerto.util.TamanhoFonte
 import com.example.remediocerto.util.aplicarInsetsDoSistema
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
@@ -31,6 +33,11 @@ class EntradaActivity : AppCompatActivity() {
     // O botão "voltar" do celular, na tela de criar conta, volta ao login em vez de fechar o app.
     private val voltarDoCadastro = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() = viewModel.mostrarLogin()
+    }
+
+    // Aplica o tamanho de letra escolhido (padrão ou modo de acessibilidade).
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(TamanhoFonte.aplicar(newBase))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

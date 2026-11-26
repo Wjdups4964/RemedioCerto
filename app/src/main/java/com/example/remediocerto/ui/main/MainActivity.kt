@@ -1,6 +1,7 @@
 package com.example.remediocerto.ui.main
 
 import android.Manifest
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ import com.example.remediocerto.data.Repositorios
 import com.example.remediocerto.data.model.Perfil
 import com.example.remediocerto.databinding.ActivityMainBinding
 import com.example.remediocerto.util.PermissoesHelper
+import com.example.remediocerto.util.TamanhoFonte
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
@@ -40,6 +42,11 @@ class MainActivity : AppCompatActivity() {
     // pergunta sobre "Alarmes e lembretes" (que faz o aviso chegar no minuto exato).
     private val pedirNotificacoes =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { perguntarAlarmeExato() }
+
+    // Aplica o tamanho de letra escolhido (padrão ou modo de acessibilidade).
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(TamanhoFonte.aplicar(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

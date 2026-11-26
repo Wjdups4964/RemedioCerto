@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -20,8 +19,8 @@ import com.example.remediocerto.ui.entrada.EntradaActivity
 import com.example.remediocerto.ui.main.MainActivity
 import com.example.remediocerto.util.ModoTema
 import com.example.remediocerto.util.PermissoesHelper
+import com.example.remediocerto.util.TamanhoFonte
 import com.example.remediocerto.util.Tema
-import com.example.remediocerto.util.coletar
 
 class ConfiguracoesFragment : Fragment() {
 
@@ -48,16 +47,14 @@ class ConfiguracoesFragment : Fragment() {
             PermissoesHelper.intentAjusteAlarmeExato(requireContext())?.let { runCatching { startActivity(it) } }
         }
 
-        // Mostra o valor salvo. Só ajusta a chave se estiver diferente, para não entrar em laço.
-        coletar(viewModel.acessibilidade) { ativo ->
-            if (binding.switchAcessibilidade.isChecked != ativo) {
-                binding.switchAcessibilidade.isChecked = ativo
-            }
-        }
+        // Modo de acessibilidade = letras grandes. Vale neste aparelho; ao mudar, a tela é recriada com o novo tamanho.
+        binding.switchAcessibilidade.isChecked = TamanhoFonte.acessibilidadeAtiva(requireContext())
         // setOnClickListener (e não OnCheckedChange): só dispara quando a PESSOA toca na chave.
         binding.switchAcessibilidade.setOnClickListener {
-            viewModel.alterarAcessibilidade(binding.switchAcessibilidade.isChecked)
-            Toast.makeText(requireContext(), R.string.config_acessibilidade_alterada, Toast.LENGTH_SHORT).show()
+            val ativa = binding.switchAcessibilidade.isChecked
+            TamanhoFonte.escolher(requireContext(), ativa)
+            viewModel.alterarAcessibilidade(ativa)
+            requireActivity().recreate()
         }
 
         mostrarTemaEscolhido()
