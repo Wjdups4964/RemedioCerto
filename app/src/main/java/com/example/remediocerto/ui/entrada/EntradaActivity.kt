@@ -3,6 +3,7 @@ package com.example.remediocerto.ui.entrada
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -27,12 +28,18 @@ class EntradaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEntradaBinding
     private val viewModel: EntradaViewModel by viewModels()
 
+    // O botão "voltar" do celular, na tela de criar conta, volta ao login em vez de fechar o app.
+    private val voltarDoCadastro = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() = viewModel.mostrarLogin()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEntradaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.root.aplicarInsetsDoSistema()
 
+        onBackPressedDispatcher.addCallback(this, voltarDoCadastro)
         configurarCliques()
         limparErrosAoDigitar()
         observarEstado()
@@ -68,6 +75,7 @@ class EntradaActivity : AppCompatActivity() {
             )
         }
         binding.btnVoltarLogin.setOnClickListener { viewModel.mostrarLogin() }
+        binding.btnVoltarEntrada.setOnClickListener { viewModel.mostrarLogin() }
 
         binding.btnJaConfirmei.setOnClickListener { viewModel.jaConfirmei() }
         binding.btnReenviar.setOnClickListener { viewModel.reenviar() }
@@ -102,13 +110,15 @@ class EntradaActivity : AppCompatActivity() {
         binding.painelLogin.isVisible = painel == Painel.LOGIN
         binding.painelCadastro.isVisible = painel == Painel.CADASTRO
         binding.painelVerificacao.isVisible = painel == Painel.VERIFICACAO
+        binding.btnVoltarEntrada.isVisible = painel == Painel.CADASTRO
+        voltarDoCadastro.isEnabled = painel == Painel.CADASTRO
     }
 
     private fun mostrarOcupado(ocupado: Boolean) {
         binding.progresso.isVisible = ocupado
         listOf(
             binding.btnEntrar, binding.btnEsqueciSenha, binding.btnIrCadastro,
-            binding.btnCriarConta, binding.btnVoltarLogin,
+            binding.btnCriarConta, binding.btnVoltarLogin, binding.btnVoltarEntrada,
             binding.btnJaConfirmei, binding.btnReenviar, binding.btnTrocarConta,
         ).forEach { it.isEnabled = !ocupado }
     }

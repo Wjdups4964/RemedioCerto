@@ -3,7 +3,6 @@
     <string name="nav_proximos_dias">Próximos dias</string>
     <string name="proximos_titulo">Próximos dias</string>
     <string name="proximos_botao">Ver próximos dias</string>
-    <string name="proximos_voltar">Voltar</string>
     <string name="proximos_vazio">Cadastre um medicamento na aba Remédios para ver os próximos dias.</string>
 
     <!-- Títulos das duas partes da tela -->

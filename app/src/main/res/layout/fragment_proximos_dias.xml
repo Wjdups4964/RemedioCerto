@@ -31,13 +31,4 @@
         android:textColor="@color/rc_texto_suave"
         android:textSize="@dimen/texto_corpo"
         android:visibility="gone" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVoltar"
-        style="@style/Widget.RemedioCerto.Button.Outlined"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margem"
-        android:minHeight="@dimen/altura_botao"
-        android:text="@string/proximos_voltar" />
 </LinearLayout>

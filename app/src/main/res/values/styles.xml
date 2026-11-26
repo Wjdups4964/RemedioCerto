@@ -90,6 +90,8 @@
         <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">20dp</item>
+        <!-- Espaço à direita para o botão de voltar não cobrir o texto -->
+        <item name="android:paddingEnd">76dp</item>
     </style>
 
     <!-- Subtítulo de seção dentro das telas -->

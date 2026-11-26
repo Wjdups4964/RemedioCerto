@@ -5,13 +5,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navHost"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        app:defaultNavHost="true" />
+        android:layout_weight="1">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true" />
+
+        <!-- Botão de voltar de todas as telas internas: pequeno, no canto de cima à direita -->
+        <ImageButton
+            android:id="@+id/btnVoltarGlobal"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="28dp"
+            android:background="@drawable/bg_voltar"
+            android:contentDescription="@string/voltar_descricao"
+            android:elevation="6dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_voltar"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"

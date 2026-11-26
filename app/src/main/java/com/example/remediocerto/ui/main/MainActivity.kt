@@ -82,9 +82,14 @@ class MainActivity : AppCompatActivity() {
 
         if (perfil == Perfil.IDOSO) configurarAvisosDeDose(primeiraVez = savedInstanceState == null)
 
+        // Botão de voltar: igual ao botão "voltar" do celular, em todas as telas internas.
+        binding.btnVoltarGlobal.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+
         // A barra inferior só aparece nas telas principais de cada perfil.
+        // Nas demais telas (cadastro, detalhes, vínculo, farmácias...) aparece o botão de voltar.
         navController.addOnDestinationChangedListener { _, destino, _ ->
             binding.bottomNav.isVisible = destino.id in abas
+            binding.btnVoltarGlobal.isVisible = destino.id !in abas
             ajustarEspacoInferior()
         }
     }

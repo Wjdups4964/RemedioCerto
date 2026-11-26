@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -379,3 +383,20 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+
+    <!-- Só aparece ao criar conta: leva de volta ao login (igual ao "voltar" do celular) -->
+    <ImageButton
+        android:id="@+id/btnVoltarEntrada"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/bg_voltar"
+        android:contentDescription="@string/voltar_descricao"
+        android:elevation="6dp"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_voltar"
+        android:visibility="gone" />
+</FrameLayout>
