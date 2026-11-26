@@ -10,4 +10,12 @@
     <string name="historico_hoje">Hoje, %1$s</string>
     <string name="historico_ontem">Ontem, %1$s</string>
     <string name="historico_dose_das">Dose das %1$s</string>
+    <string name="historico_dose_tomada_as">Dose das %1$s · tomada às %2$s</string>
+
+    <!-- Segunda linha do resumo, só quando houve doses não tomadas ou atrasadas -->
+    <string name="historico_semana_falhas">Não tomadas: %1$d · Atrasadas: %2$d</string>
+
+    <!-- Situação de cada dose no histórico -->
+    <string name="status_tomada_atraso">Tomada com atraso</string>
+    <string name="status_nao_tomada">Não tomada</string>
 </resources>

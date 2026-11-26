@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.remediocerto.R
 import com.example.remediocerto.databinding.ItemHistoricoBinding
-import com.example.remediocerto.util.aplicarStatus
+import com.example.remediocerto.util.aplicarSituacao
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -46,11 +46,18 @@ class HistoricoAdapter : ListAdapter<ItemHistorico, RecyclerView.ViewHolder>(Com
             is ItemHistorico.Dia -> (holder as DiaViewHolder).texto.text = rotuloDoDia(holder.itemView, item.dia)
             is ItemHistorico.Dose -> {
                 val binding = (holder as DoseViewHolder).binding
-                val registro = item.registro
-                val hora = Instant.ofEpochMilli(registro.previstoEm).atZone(ZoneId.systemDefault()).format(formatoHora)
-                binding.tvNome.text = registro.medicamentoNome
-                binding.tvData.text = binding.root.context.getString(R.string.historico_dose_das, hora)
-                binding.tvStatus.aplicarStatus(registro.status)
+                val dose = item.dose
+                val contexto = binding.root.context
+                val zona = ZoneId.systemDefault()
+                val hora = Instant.ofEpochMilli(dose.previstoEm).atZone(zona).format(formatoHora)
+                binding.tvNome.text = dose.nome
+                binding.tvData.text = if (dose.situacao == SituacaoDose.TOMADA_COM_ATRASO && dose.registradoEm != null) {
+                    val tomadaAs = Instant.ofEpochMilli(dose.registradoEm).atZone(zona).format(formatoHora)
+                    contexto.getString(R.string.historico_dose_tomada_as, hora, tomadaAs)
+                } else {
+                    contexto.getString(R.string.historico_dose_das, hora)
+                }
+                binding.tvStatus.aplicarSituacao(dose.situacao)
             }
         }
     }
@@ -75,7 +82,7 @@ class HistoricoAdapter : ListAdapter<ItemHistorico, RecyclerView.ViewHolder>(Com
     private object Comparador : DiffUtil.ItemCallback<ItemHistorico>() {
         override fun areItemsTheSame(a: ItemHistorico, b: ItemHistorico) = when {
             a is ItemHistorico.Dia && b is ItemHistorico.Dia -> a.dia == b.dia
-            a is ItemHistorico.Dose && b is ItemHistorico.Dose -> a.registro.id == b.registro.id
+            a is ItemHistorico.Dose && b is ItemHistorico.Dose -> a.dose.chave == b.dose.chave
             else -> false
         }
 

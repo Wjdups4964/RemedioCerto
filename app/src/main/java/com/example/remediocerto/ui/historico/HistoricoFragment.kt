@@ -34,9 +34,13 @@ class HistoricoFragment : Fragment() {
             binding.tvVazio.isVisible = itens.isEmpty()
         }
         coletar(viewModel.resumo) { resumo ->
-            binding.tvAdesao.text =
-                if (resumo == null) getString(R.string.historico_sem_semana)
-                else resources.getQuantityString(R.plurals.historico_semana, resumo.total, resumo.tomadas, resumo.total)
+            binding.tvAdesao.text = when {
+                resumo == null -> getString(R.string.historico_sem_semana)
+                resumo.naoTomadas + resumo.atrasadas == 0 ->
+                    resources.getQuantityString(R.plurals.historico_semana, resumo.total, resumo.tomadas, resumo.total)
+                else -> resources.getQuantityString(R.plurals.historico_semana, resumo.total, resumo.tomadas, resumo.total) +
+                    "\n" + getString(R.string.historico_semana_falhas, resumo.naoTomadas, resumo.atrasadas)
+            }
         }
     }
 

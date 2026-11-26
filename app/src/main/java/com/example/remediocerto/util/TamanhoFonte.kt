@@ -17,7 +17,7 @@ object TamanhoFonte {
     private const val CHAVE = "letras_grandes"
 
     // Quanto as letras diminuem no modo padrão, em relação ao tamanho grande.
-    private const val ESCALA_PADRAO = 0.80f
+    private const val ESCALA_PADRAO = 0.82f
 
     fun acessibilidadeAtiva(context: Context): Boolean =
         context.getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE).getBoolean(CHAVE, false)
