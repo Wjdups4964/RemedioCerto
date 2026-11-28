@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.example.remediocerto.data.model.Medicamento
+import com.example.remediocerto.ui.entrada.EntradaActivity
 import com.example.remediocerto.util.PermissoesHelper
 
 /**
@@ -21,6 +22,8 @@ object AlarmeScheduler {
     const val EXTRA_HORA = "hora"
     const val EXTRA_PREVISTO_EM = "previstoEm"
     const val EXTRA_MINUTOS_ANTES = "minutosAntes"
+    const val EXTRA_ADIADO_PARA = "adiadoPara"
+    const val EXTRA_ADIAMENTO_MIN = "adiamentoMin"
 
     /** Guarda a lista de medicamentos no celular e reagenda os avisos. Chamado quando a lista muda. */
     fun atualizar(context: Context, medicamentos: List<Medicamento>) {
@@ -37,8 +40,25 @@ object AlarmeScheduler {
     fun cancelarTudo(context: Context) {
         val app = context.applicationContext
         val alarmManager = app.getSystemService(AlarmManager::class.java)
-        AgendaLocal.lerCodigos(app).forEach { cancelar(app, alarmManager, it) }
+        (AgendaLocal.lerCodigos(app) + AgendaLocal.codigosAdiados(app)).forEach { cancelar(app, alarmManager, it) }
         AgendaLocal.limpar(app)
+    }
+
+    /** "Adiar": o alarme da dose toca de novo daqui a [minutos] minutos. */
+    fun agendarAdiamento(context: Context, lembrete: Lembrete, minutos: Int) {
+        val app = context.applicationContext
+        val adiado = lembrete.copy(minutosAntes = 0, adiadoPara = System.currentTimeMillis() + minutos * 60_000L)
+        agendarUm(app, app.getSystemService(AlarmManager::class.java), adiado, PermissoesHelper.podeAgendarExato(app))
+        AgendaLocal.guardarAdiado(app, adiado.idNotificacao, adiado.codigo)
+    }
+
+    /** A dose foi tomada (ou o adiamento já tocou): cancela o alarme repetido que estiver esperando. */
+    fun cancelarAdiamento(context: Context, idNotificacao: Int) {
+        val app = context.applicationContext
+        val codigos = AgendaLocal.removerAdiados(app, idNotificacao)
+        if (codigos.isEmpty()) return
+        val alarmManager = app.getSystemService(AlarmManager::class.java)
+        codigos.forEach { cancelar(app, alarmManager, it) }
     }
 
     private fun agendar(context: Context, medicamentos: List<Medicamento>) {
@@ -54,19 +74,24 @@ object AlarmeScheduler {
     }
 
     private fun agendarUm(context: Context, alarmManager: AlarmManager, lembrete: Lembrete, exato: Boolean) {
-        val intent = intentBase(context)
-            .putExtra(EXTRA_MEDICAMENTO_ID, lembrete.medicamentoId)
-            .putExtra(EXTRA_NOME, lembrete.nome)
-            .putExtra(EXTRA_DOSE, lembrete.dose)
-            .putExtra(EXTRA_HORA, lembrete.hora)
-            .putExtra(EXTRA_PREVISTO_EM, lembrete.previstoEm)
-            .putExtra(EXTRA_MINUTOS_ANTES, lembrete.minutosAntes)
+        val intent = intentBase(context).comLembrete(lembrete)
         val pendente = PendingIntent.getBroadcast(
             context, lembrete.codigo, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
+
+        // Os avisos de 10 e 5 minutos antes são aproximados de propósito. Com a tela apagada, o Android
+        // deixa cada app disparar só um alarme exato a cada 9 minutos, e essa vez precisa ser a do alarme.
+        if (lembrete.minutosAntes != 0) {
+            alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, lembrete.disparaEm, pendente)
+            return
+        }
+
         try {
             if (exato) {
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, lembrete.disparaEm, pendente)
+                // Despertador: o Android não adia por economia de bateria e mostra o ícone de alarme
+                // na barra de status, igual ao app de Relógio.
+                val info = AlarmManager.AlarmClockInfo(lembrete.disparaEm, telaInicial(context))
+                alarmManager.setAlarmClock(info, pendente)
             } else {
                 // Sem a permissão de alarme exato o Android pode atrasar o aviso em alguns minutos.
                 alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, lembrete.disparaEm, pendente)
@@ -76,6 +101,15 @@ object AlarmeScheduler {
             alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, lembrete.disparaEm, pendente)
         }
     }
+
+    // Para onde o ícone de alarme da barra de status leva quando a pessoa toca nele.
+    private fun telaInicial(context: Context): PendingIntent =
+        PendingIntent.getActivity(
+            context,
+            0,
+            Intent(context, EntradaActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
 
     private fun cancelar(context: Context, alarmManager: AlarmManager, codigo: Int) {
         val pendente = PendingIntent.getBroadcast(

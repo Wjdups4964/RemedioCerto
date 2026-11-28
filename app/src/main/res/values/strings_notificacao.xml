@@ -4,6 +4,12 @@
     <string name="notif_canal_nome">Lembretes de medicamento</string>
     <string name="notif_canal_descricao">Avisos antes da hora de tomar cada remédio.</string>
 
+    <!-- Alarme da hora de tomar -->
+    <string name="notif_canal_alarme_nome">Alarme da hora de tomar</string>
+    <string name="notif_canal_alarme_descricao">Toca e abre a tela do alarme na hora de tomar cada remédio.</string>
+    <string name="alarme_adiar_min">Adiar %1$d min</string>
+    <string name="alarme_adiar_msg_min">Aviso adiado: toca de novo em %1$d minutos.</string>
+
     <!-- Notificação de uma dose -->
     <string name="notif_titulo_antes">Daqui a %1$d minutos: %2$s</string>
     <string name="notif_titulo_agora">Hora de tomar: %1$s</string>
