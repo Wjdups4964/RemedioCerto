@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Vínculo entre idoso e familiar -->
+    <!-- Vínculo entre quem usa o app e quem acompanha -->
     <string name="vinculo_lista_familiar">Quem você acompanha</string>
-    <string name="vinculo_lista_vazia_idoso">Ninguém acompanha você ainda. Gere um código e passe para o seu familiar.</string>
-    <string name="vinculo_lista_vazia_familiar">Você ainda não acompanha ninguém. Peça o código ao idoso e digite acima.</string>
+    <string name="vinculo_lista_vazia_idoso">Ninguém acompanha você ainda. Gere um código e passe para quem vai acompanhar você.</string>
+    <string name="vinculo_lista_vazia_familiar">Você ainda não acompanha ninguém. Peça o código à pessoa e digite acima.</string>
     <string name="vinculo_valido_ate">Vale até %1$s</string>
     <string name="vinculo_compartilhar">Compartilhar código</string>
-    <string name="vinculo_texto_compartilhar">Meu código no RemédioCerto é %1$s. Digite em Configurações > Vínculo para acompanhar meus remédios.</string>
-    <string name="vinculo_codigo_gerado">Código gerado. Passe para o seu familiar.</string>
+    <string name="vinculo_texto_compartilhar">Meu código no RemédioCerto é %1$s. No app, troque para o modo Acompanhante em Configurações, abra Vínculo e digite o código para acompanhar meus remédios.</string>
+    <string name="vinculo_codigo_gerado">Código gerado. Passe para quem vai acompanhar você.</string>
     <string name="vinculo_erro_gerar">Não foi possível gerar o código. Confira a internet e tente de novo.</string>
     <string name="vinculo_deixar">Deixar de acompanhar</string>
     <string name="vinculo_revogar_titulo">Revogar acesso?</string>
@@ -19,15 +19,15 @@
     <string name="vinculo_erro_expirado">Esse código não vale mais (venceu ou já foi usado). Peça um novo.</string>
     <string name="vinculo_erro_ja_usado">Esse código já foi usado. Peça um novo.</string>
     <string name="vinculo_erro_ja_vinculado">Você já acompanha essa pessoa.</string>
-    <string name="vinculo_erro_proprio">Esse é o seu próprio código. Passe-o para o familiar.</string>
+    <string name="vinculo_erro_proprio">Esse é o seu próprio código. Passe-o para quem vai acompanhar você.</string>
     <string name="vinculo_erro_sem_internet">Sem internet. Conecte-se e tente de novo.</string>
     <string name="vinculo_erro_outro">Não foi possível vincular agora. Tente de novo.</string>
 
-    <!-- Acompanhamento (familiar) -->
+    <!-- Acompanhamento (modo Acompanhante) -->
     <string name="acompanhamento_acompanhando">Acompanhando: %1$s</string>
     <string name="acompanhamento_trocar">Trocar</string>
     <string name="acompanhamento_escolher">Quem você quer ver?</string>
     <string name="acompanhamento_sem_doses">Nenhuma dose prevista para hoje.</string>
-    <string name="acompanhamento_sem_vinculo">Você ainda não acompanha ninguém. Peça ao idoso o código de convite e digite na tela de Vínculo.</string>
+    <string name="acompanhamento_sem_vinculo">Você ainda não acompanha ninguém. Peça o código de convite à pessoa e digite na tela de Vínculo.</string>
     <string name="acompanhamento_ir_para_vinculo">Informar código</string>
 </resources>

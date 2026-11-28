@@ -229,38 +229,6 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        style="@style/Estilo.Secao"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margem"
-                        android:text="@string/entrada_perfil_titulo" />
-
-                    <com.google.android.material.button.MaterialButtonToggleGroup
-                        android:id="@+id/togglePerfil"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="vertical"
-                    app:singleSelection="true">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnIdoso"
-                            style="?attr/materialButtonOutlinedStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="@dimen/altura_botao"
-                            android:text="@string/entrada_btn_idoso" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnFamiliar"
-                            style="?attr/materialButtonOutlinedStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="@dimen/altura_botao"
-                            android:text="@string/entrada_btn_familiar" />
-                    </com.google.android.material.button.MaterialButtonToggleGroup>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

@@ -18,7 +18,6 @@ import com.example.remediocerto.databinding.ActivityEntradaBinding
 import com.example.remediocerto.ui.main.MainActivity
 import com.example.remediocerto.util.TamanhoFonte
 import com.example.remediocerto.util.aplicarInsetsDoSistema
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 /**
@@ -67,17 +66,11 @@ class EntradaActivity : AppCompatActivity() {
         binding.btnIrCadastro.setOnClickListener { viewModel.mostrarCadastro() }
 
         binding.btnCriarConta.setOnClickListener {
-            val perfil = when (binding.togglePerfil.checkedButtonId) {
-                R.id.btnIdoso -> Perfil.IDOSO
-                R.id.btnFamiliar -> Perfil.FAMILIAR
-                else -> null
-            }
             viewModel.criarConta(
                 nome = binding.etCadNome.text?.toString().orEmpty(),
                 email = binding.etCadEmail.text?.toString().orEmpty(),
                 senha = binding.etCadSenha.text?.toString().orEmpty(),
                 confirmacao = binding.etCadConfirma.text?.toString().orEmpty(),
-                perfil = perfil,
                 aceitouAviso = binding.checkAviso.isChecked,
             )
         }
@@ -134,7 +127,6 @@ class EntradaActivity : AppCompatActivity() {
         when (evento) {
             is EventoEntrada.Mensagem -> mostrarMensagem(evento)
             is EventoEntrada.Entrar -> abrirApp(evento.perfil)
-            EventoEntrada.EscolherPerfil -> perguntarPerfil()
         }
     }
 
@@ -149,17 +141,6 @@ class EntradaActivity : AppCompatActivity() {
             Campo.CAD_CONFIRMA -> binding.tilCadConfirma.error = texto
             null -> Toast.makeText(this, texto, Toast.LENGTH_LONG).show()
         }
-    }
-
-    private fun perguntarPerfil() {
-        val opcoes = arrayOf(getString(R.string.entrada_btn_idoso), getString(R.string.entrada_btn_familiar))
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.entrada_escolher_perfil)
-            .setCancelable(false)
-            .setItems(opcoes) { _, indice ->
-                viewModel.definirPerfil(if (indice == 0) Perfil.IDOSO else Perfil.FAMILIAR)
-            }
-            .show()
     }
 
     private fun abrirApp(perfil: Perfil) {

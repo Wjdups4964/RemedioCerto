@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -35,11 +36,22 @@ class ConfiguracoesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Os avisos dos remédios são só do idoso; o familiar não vê essa seção.
+        // Os avisos dos remédios são só do modo "Uso próprio"; no modo Acompanhante essa seção some.
         val perfil = Perfil.valueOf(
             requireActivity().intent.getStringExtra(MainActivity.EXTRA_PERFIL) ?: Perfil.IDOSO.name
         )
         binding.secaoAvisos.isVisible = perfil == Perfil.IDOSO
+
+        // A mesma conta tem os dois modos. Trocar reabre o app já no modo escolhido.
+        val proprio = perfil == Perfil.IDOSO
+        binding.toggleModo.check(if (proprio) R.id.btnModoProprio else R.id.btnModoAcompanhante)
+        binding.tvModoAjuda.setText(if (proprio) R.string.config_modo_ajuda_proprio else R.string.config_modo_ajuda_acompanhante)
+        // Também dispara ao marcar por código; por isso só troca se o modo escolhido é outro.
+        binding.toggleModo.addOnButtonCheckedListener { _, botao, marcado ->
+            if (!marcado) return@addOnButtonCheckedListener
+            val novo = if (botao == R.id.btnModoProprio) Perfil.IDOSO else Perfil.FAMILIAR
+            if (novo != perfil) trocarModo(novo)
+        }
         binding.btnLigarNotif.setOnClickListener {
             runCatching { startActivity(PermissoesHelper.intentAjusteNotificacoes(requireContext())) }
         }
@@ -88,6 +100,18 @@ class ConfiguracoesFragment : Fragment() {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
+    }
+
+    // Guarda o modo na conta (vale também no próximo login) e reabre o app nele. Os alarmes agendados continuam.
+    private fun trocarModo(novo: Perfil) {
+        AuthRepository().salvarPerfil(novo)
+        val aviso = if (novo == Perfil.IDOSO) R.string.config_modo_trocado_proprio else R.string.config_modo_trocado_acompanhante
+        Toast.makeText(requireContext().applicationContext, aviso, Toast.LENGTH_SHORT).show()
+        startActivity(
+            Intent(requireContext(), MainActivity::class.java)
+                .putExtra(MainActivity.EXTRA_PERFIL, novo.name)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        )
     }
 
     // Ao voltar da tela de ajustes do Android, a situação dos avisos é conferida de novo.
