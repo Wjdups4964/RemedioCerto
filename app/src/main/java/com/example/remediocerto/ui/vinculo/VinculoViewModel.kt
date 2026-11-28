@@ -58,7 +58,7 @@ class VinculoViewModel : ViewModel() {
         if (_ocupado.value) return
         viewModelScope.launch {
             _ocupado.value = true
-            val novo = vinculos.gerarConvite(nomeDoUsuario(padrao = "Idoso"))
+            val novo = vinculos.gerarConvite(nomeDoUsuario(padrao = "Usuário"))
             _ocupado.value = false
             if (novo != null) {
                 _convite.value = novo
@@ -73,7 +73,7 @@ class VinculoViewModel : ViewModel() {
         if (_ocupado.value) return
         viewModelScope.launch {
             _ocupado.value = true
-            val resultado = vinculos.usarConvite(normalizarCodigo(textoDigitado), nomeDoUsuario(padrao = "Familiar"))
+            val resultado = vinculos.usarConvite(normalizarCodigo(textoDigitado), nomeDoUsuario(padrao = "Acompanhante"))
             _ocupado.value = false
             _eventos.send(
                 when (resultado) {

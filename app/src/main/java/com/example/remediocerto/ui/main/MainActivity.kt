@@ -32,8 +32,8 @@ import kotlinx.coroutines.launch
 
 /**
  * Hospeda o NavHostFragment e a navegação inferior. As abas mudam conforme o
- * perfil: idoso (Hoje, Medicamentos, Histórico, Configurações) ou familiar
- * (Acompanhamento, Configurações).
+ * modo: Uso próprio (Hoje, Medicamentos, Histórico, Configurações) ou Acompanhante
+ * (Acompanhamento, Configurações). A troca fica em Configurações.
  */
 class MainActivity : AppCompatActivity() {
 

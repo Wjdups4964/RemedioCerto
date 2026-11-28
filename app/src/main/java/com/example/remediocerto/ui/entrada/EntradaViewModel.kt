@@ -23,8 +23,6 @@ enum class Campo { LOGIN_EMAIL, LOGIN_SENHA, CAD_NOME, CAD_EMAIL, CAD_SENHA, CAD
 sealed interface EventoEntrada {
     data class Mensagem(@StringRes val texto: Int, val campo: Campo? = null) : EventoEntrada
     data class Entrar(val perfil: Perfil) : EventoEntrada
-    /** Conta sem perfil guardado: a tela pergunta como a pessoa vai usar o app. */
-    object EscolherPerfil : EventoEntrada
 }
 
 private const val TAMANHO_MINIMO_SENHA = 8
@@ -86,7 +84,6 @@ class EntradaViewModel : ViewModel() {
         email: String,
         senha: String,
         confirmacao: String,
-        perfil: Perfil?,
         aceitouAviso: Boolean,
     ) {
         val e = email.trim()
@@ -94,11 +91,11 @@ class EntradaViewModel : ViewModel() {
         if (!emailValido(e)) return avisar(R.string.erro_email_invalido, Campo.CAD_EMAIL)
         if (senha.length < TAMANHO_MINIMO_SENHA) return avisar(R.string.erro_senha_curta, Campo.CAD_SENHA)
         if (senha != confirmacao) return avisar(R.string.erro_senha_diferente, Campo.CAD_CONFIRMA)
-        if (perfil == null) return avisar(R.string.erro_perfil)
         if (!aceitouAviso) return avisar(R.string.entrada_aceite_obrigatorio)
 
         _ocupado.value = true
-        auth.criarConta(e, senha, nome.trim(), perfil) { erro ->
+        // Conta única: toda conta nasce no modo "Uso próprio". A troca para "Acompanhante" fica em Configurações.
+        auth.criarConta(e, senha, nome.trim(), Perfil.IDOSO) { erro ->
             if (erro != null) {
                 falhar(erro, Campo.CAD_EMAIL)
             } else {
@@ -155,12 +152,6 @@ class EntradaViewModel : ViewModel() {
         _painel.value = Painel.LOGIN
     }
 
-    /** Resposta do diálogo "como você vai usar o app?" (conta sem perfil guardado). */
-    fun definirPerfil(perfil: Perfil) {
-        auth.salvarPerfil(perfil)
-        _eventos.trySend(EventoEntrada.Entrar(perfil))
-    }
-
     private fun irParaVerificacao() {
         _emailVerificacao.value = auth.emailAtual.orEmpty()
         _ocupado.value = false
@@ -177,7 +168,11 @@ class EntradaViewModel : ViewModel() {
                     _painel.value = Painel.LOGIN
                     avisar(mensagemDe(erro))
                 }
-                perfil == null -> _eventos.trySend(EventoEntrada.EscolherPerfil)
+                // Entra no último modo usado. Conta sem modo guardado (contas antigas) abre em "Uso próprio".
+                perfil == null -> {
+                    auth.salvarPerfil(Perfil.IDOSO)
+                    _eventos.trySend(EventoEntrada.Entrar(Perfil.IDOSO))
+                }
                 else -> _eventos.trySend(EventoEntrada.Entrar(perfil))
             }
         }
