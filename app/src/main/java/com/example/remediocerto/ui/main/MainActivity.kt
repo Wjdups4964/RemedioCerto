@@ -17,9 +17,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.remediocerto.R
 import com.example.remediocerto.alarm.AgendaLocal
 import com.example.remediocerto.alarm.AlarmeScheduler
+import com.example.remediocerto.alarm.idNotificacaoDaDose
 import com.example.remediocerto.data.Repositorios
 import com.example.remediocerto.data.model.Perfil
+import com.example.remediocerto.data.model.RegistroDose
+import com.example.remediocerto.data.model.StatusDose
 import com.example.remediocerto.databinding.ActivityMainBinding
+import com.example.remediocerto.notification.NotificacaoHelper
 import com.example.remediocerto.util.PermissoesHelper
 import com.example.remediocerto.util.TamanhoFonte
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -115,10 +119,28 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                Repositorios.medicamentos.observar()
-                    .catch { /* sem lista nova: os avisos já agendados continuam valendo */ }
-                    .collect { AlarmeScheduler.atualizar(applicationContext, it) }
+                launch {
+                    Repositorios.medicamentos.observar()
+                        .catch { /* sem lista nova: os avisos já agendados continuam valendo */ }
+                        .collect { AlarmeScheduler.atualizar(applicationContext, it) }
+                }
+                // Dose tomada (aqui no app, ou em outro aparelho): o alarme que ainda toca ou está
+                // esperando por um "Adiar" dessa dose não faz mais sentido.
+                launch {
+                    Repositorios.doses.observar()
+                        .catch { /* sem registros novos: nada a cancelar */ }
+                        .collect { registros -> silenciarDosesTomadas(registros) }
+                }
             }
+        }
+    }
+
+    private fun silenciarDosesTomadas(registros: List<RegistroDose>) {
+        val limite = System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000L
+        registros.filter { it.status == StatusDose.TOMADA && it.previstoEm >= limite }.forEach {
+            val id = idNotificacaoDaDose(it.medicamentoId, it.previstoEm)
+            AlarmeScheduler.cancelarAdiamento(applicationContext, id)
+            NotificacaoHelper.cancelar(applicationContext, id)
         }
     }
 

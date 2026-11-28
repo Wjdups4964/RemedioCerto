@@ -4,7 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Alarme na hora exata. No Android 13 ou mais novo o USE_EXACT_ALARM já vem liberado na
+         instalação, porque o alarme de medicação é a função principal do app. -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -45,6 +50,10 @@
 
         <receiver
             android:name=".alarm.AlarmeReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".alarm.AcaoDoseReceiver"
             android:exported="false" />
 
         <receiver

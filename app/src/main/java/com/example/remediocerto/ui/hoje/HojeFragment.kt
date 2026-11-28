@@ -1,6 +1,5 @@
 package com.example.remediocerto.ui.hoje
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.remediocerto.R
+import com.example.remediocerto.alarm.AlarmeScheduler
+import com.example.remediocerto.alarm.Lembrete
 import com.example.remediocerto.data.model.DoseDoDia
 import com.example.remediocerto.databinding.FragmentHojeBinding
-import com.example.remediocerto.ui.alarme.AlarmeActivity
 import com.example.remediocerto.util.PermissoesHelper
 import com.example.remediocerto.util.coletar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -51,10 +51,6 @@ class HojeFragment : Fragment() {
 
         binding.btnProximosDias.setOnClickListener {
             findNavController().navigate(R.id.action_hoje_to_proximos_dias)
-        }
-
-        binding.btnTestarAlarme.setOnClickListener {
-            startActivity(Intent(requireContext(), AlarmeActivity::class.java))
         }
     }
 
@@ -98,6 +94,11 @@ class HojeFragment : Fragment() {
 
     private fun adiarDose(dose: DoseDoDia) {
         if (viewModel.adiar(dose)) {
+            AlarmeScheduler.agendarAdiamento(
+                requireContext(),
+                Lembrete(dose.medicamentoId, dose.nome, dose.dose, dose.hora, dose.previstoEm, minutosAntes = 0),
+                dose.adiamentoMin,
+            )
             val msg = getString(R.string.hoje_adiada, dose.adiamentoMin)
             Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
         } else {

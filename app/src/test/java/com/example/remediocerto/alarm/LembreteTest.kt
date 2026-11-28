@@ -96,4 +96,23 @@ class LembreteTest {
         val doMesmoHorario = proximosLembretes(listOf(losartana()), agora, diasAFrente = 1)
         assertEquals(1, doMesmoHorario.map { it.idNotificacao }.toSet().size)
     }
+
+    @Test
+    fun `alarme adiado toca no instante do adiamento, nao no horario da dose`() {
+        val previsto = instante(2026, 11, 20, 8, 0)
+        val original = Lembrete("m1", "Losartana", "50 mg", "08:00", previsto, minutosAntes = 0)
+        val adiado = original.copy(adiadoPara = previsto + 10 * 60_000L)
+        assertEquals(previsto, original.disparaEm)
+        assertEquals(previsto + 10 * 60_000L, adiado.disparaEm)
+    }
+
+    @Test
+    fun `alarme adiado tem codigo proprio mas a mesma notificacao da dose`() {
+        val previsto = instante(2026, 11, 20, 8, 0)
+        val original = Lembrete("m1", "Losartana", "50 mg", "08:00", previsto, minutosAntes = 0)
+        val adiado = original.copy(adiadoPara = previsto + 10 * 60_000L)
+        assertTrue(original.codigo != adiado.codigo)
+        assertEquals(original.idNotificacao, adiado.idNotificacao)
+        assertEquals(original.idNotificacao, idNotificacaoDaDose("m1", previsto))
+    }
 }

@@ -20,16 +20,21 @@ data class Lembrete(
     val hora: String,
     val previstoEm: Long,
     val minutosAntes: Int,
+    /** Só no alarme repetido depois de "Adiar": o instante em que ele deve tocar (0 = não é um adiamento). */
+    val adiadoPara: Long = 0L,
 ) {
     /** Instante em que a notificação deve aparecer. */
-    val disparaEm: Long get() = previstoEm - minutosAntes * 60_000L
+    val disparaEm: Long get() = if (adiadoPara > 0L) adiadoPara else previstoEm - minutosAntes * 60_000L
 
-    /** Identifica este aviso no AlarmManager (um por medicamento, dose e antecedência). */
-    val codigo: Int get() = "$medicamentoId|$previstoEm|$minutosAntes".hashCode()
+    /** Identifica este aviso no AlarmManager (um por medicamento, dose, antecedência e adiamento). */
+    val codigo: Int get() = "$medicamentoId|$previstoEm|$minutosAntes|$adiadoPara".hashCode()
 
-    /** Os três avisos da mesma dose usam a mesma notificação, então o novo troca o anterior em vez de empilhar. */
-    val idNotificacao: Int get() = "$medicamentoId|$previstoEm".hashCode()
+    /** Os avisos da mesma dose usam a mesma notificação, então o novo troca o anterior em vez de empilhar. */
+    val idNotificacao: Int get() = idNotificacaoDaDose(medicamentoId, previstoEm)
 }
+
+/** Id da notificação de uma dose. Fora da classe para dar para cancelar a notificação só com o registro da dose. */
+fun idNotificacaoDaDose(medicamentoId: String, previstoEm: Long): Int = "$medicamentoId|$previstoEm".hashCode()
 
 /**
  * Todos os avisos que ainda vão acontecer nos próximos [diasAFrente] dias, do mais próximo ao mais distante.

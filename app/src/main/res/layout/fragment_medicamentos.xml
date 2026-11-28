@@ -32,7 +32,7 @@
         android:textSize="@dimen/texto_corpo"
         android:visibility="gone" />
 
-    <!-- Mesmo formato do botão "Testar tela de alarme" da tela Hoje: largura total, no pé da tela. -->
+    <!-- Botão de largura total, no pé da tela. -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/fabAdicionar"
         android:layout_width="match_parent"
