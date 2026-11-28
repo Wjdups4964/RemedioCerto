@@ -2,6 +2,7 @@ package com.example.remediocerto.ui.main
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -24,8 +25,10 @@ import com.example.remediocerto.data.model.RegistroDose
 import com.example.remediocerto.data.model.StatusDose
 import com.example.remediocerto.databinding.ActivityMainBinding
 import com.example.remediocerto.notification.NotificacaoHelper
+import com.example.remediocerto.ui.tutorial.TutorialActivity
 import com.example.remediocerto.util.PermissoesHelper
 import com.example.remediocerto.util.TamanhoFonte
+import com.example.remediocerto.util.Tutorial
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
@@ -46,6 +49,14 @@ class MainActivity : AppCompatActivity() {
     // pergunta sobre "Alarmes e lembretes" (que faz o aviso chegar no minuto exato).
     private val pedirNotificacoes =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { perguntarAlarmeExato() }
+
+    // Na primeira vez da conta neste celular, o tutorial vem antes dos pedidos de permissão (senão eles
+    // apareceriam por cima dele). Quando o tutorial fecha, seguem os pedidos.
+    private val abrirTutorial =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { pedirPermissoesDosAvisos() }
+
+    // Só o modo "Uso próprio" recebe avisos de dose.
+    private var avisosAtivos = false
 
     // Aplica o tamanho de letra escolhido (padrão ou modo de acessibilidade).
     override fun attachBaseContext(newBase: Context) {
@@ -91,7 +102,15 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.inflateMenu(menu)
         binding.bottomNav.setupWithNavController(navController)
 
-        if (perfil == Perfil.IDOSO) configurarAvisosDeDose(primeiraVez = savedInstanceState == null)
+        avisosAtivos = perfil == Perfil.IDOSO
+        if (avisosAtivos) configurarAvisosDeDose()
+        if (savedInstanceState == null) {
+            if (Tutorial.precisaMostrar(this)) {
+                abrirTutorial.launch(Intent(this, TutorialActivity::class.java))
+            } else {
+                pedirPermissoesDosAvisos()
+            }
+        }
 
         // Botão de voltar: igual ao botão "voltar" do celular, em todas as telas internas.
         binding.btnVoltarGlobal.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
@@ -109,14 +128,7 @@ class MainActivity : AppCompatActivity() {
      * Avisos de dose (10 min antes, 5 min antes e na hora). Enquanto o app está aberto, qualquer mudança nos
      * medicamentos (novo, editado, apagado) reagenda os avisos; eles continuam valendo com o app fechado.
      */
-    private fun configurarAvisosDeDose(primeiraVez: Boolean) {
-        if (primeiraVez) {
-            if (PermissoesHelper.faltaPermissaoDeNotificacao(this)) {
-                pedirNotificacoes.launch(Manifest.permission.POST_NOTIFICATIONS)
-            } else {
-                perguntarAlarmeExato()
-            }
-        }
+    private fun configurarAvisosDeDose() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -132,6 +144,16 @@ class MainActivity : AppCompatActivity() {
                         .collect { registros -> silenciarDosesTomadas(registros) }
                 }
             }
+        }
+    }
+
+    // Primeira abertura: pede a permissão de notificações (Android 13 ou mais novo) e, depois, a de alarmes exatos.
+    private fun pedirPermissoesDosAvisos() {
+        if (!avisosAtivos) return
+        if (PermissoesHelper.faltaPermissaoDeNotificacao(this)) {
+            pedirNotificacoes.launch(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            perguntarAlarmeExato()
         }
     }
 

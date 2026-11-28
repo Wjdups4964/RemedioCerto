@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- A margem fica nos elementos: o padding da raiz é substituído pelo espaço das barras do sistema. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvPasso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/rc_texto_suave"
+            android:textSize="@dimen/texto_corpo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPular"
+            style="@style/Widget.RemedioCerto.Button.Texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tutorial_pular" />
+    </LinearLayout>
+
+    <!-- O conteúdo fica centralizado e rola se o texto não couber (letras grandes). -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margem"
+            android:paddingBottom="@dimen/margem">
+
+            <TextView
+                android:id="@+id/tvEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
+                android:textSize="80sp" />
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem"
+                android:gravity="center"
+                android:textColor="@color/rc_primaria_escura"
+                android:textSize="@dimen/texto_titulo"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTexto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:textSize="@dimen/texto_corpo" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProximo"
+        style="@style/Widget.RemedioCerto.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:minHeight="@dimen/altura_botao"
+        android:text="@string/tutorial_proximo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAnterior"
+        style="@style/Widget.RemedioCerto.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:minHeight="@dimen/altura_botao"
+        android:text="@string/tutorial_anterior"
+        android:visibility="gone" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+</LinearLayout>

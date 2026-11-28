@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tutorial -->
+    <string name="config_tutorial">Ver tutorial</string>
+    <string name="tutorial_passo">Passo %1$d de %2$d</string>
+    <string name="tutorial_pular">Pular</string>
+    <string name="tutorial_proximo">Próximo</string>
+    <string name="tutorial_anterior">Voltar</string>
+    <string name="tutorial_concluir">Entendi</string>
+
+    <string name="tutorial_titulo_1">Bem-vindo ao RemédioCerto</string>
+    <string name="tutorial_texto_1">O app avisa na hora de tomar cada remédio e guarda o histórico das doses. Veja o essencial em poucos passos.</string>
+
+    <string name="tutorial_titulo_2">Cadastre seus remédios</string>
+    <string name="tutorial_texto_2">Na aba Medicamentos, toque em Adicionar e informe o nome, a dose e os horários. Os avisos são criados sozinhos.</string>
+
+    <string name="tutorial_titulo_3">Registre cada dose</string>
+    <string name="tutorial_texto_3">Na aba Hoje ficam as doses do dia. Toque em Tomei quando tomar, ou em Adiar para ser avisado de novo daqui a pouco.</string>
+
+    <string name="tutorial_titulo_4">O alarme toca na hora</string>
+    <string name="tutorial_texto_4">Na hora da dose, o celular toca e mostra os botões Tomei e Adiar. Deixe as notificações ligadas e permita alarmes e lembretes. Em alguns celulares, também é preciso tirar a economia de bateria do app.</string>
+
+    <string name="tutorial_titulo_5">Veja como foi</string>
+    <string name="tutorial_texto_5">O Histórico mostra as doses tomadas, as atrasadas e as que não foram tomadas nos últimos dias.</string>
+
+    <string name="tutorial_titulo_6">Acompanhe quem você cuida</string>
+    <string name="tutorial_texto_6">Em Configurações, troque o Modo de uso para Acompanhante e digite o código gerado na tela de Vínculo da outra pessoa. Você vê as doses dela, sem poder alterar nada.</string>
+
+    <string name="tutorial_titulo_7">Precisa rever?</string>
+    <string name="tutorial_texto_7">Este tutorial fica sempre em Configurações, em Ver tutorial.</string>
+</resources>

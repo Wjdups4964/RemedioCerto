@@ -18,6 +18,7 @@ import com.example.remediocerto.data.repository.AuthRepository
 import com.example.remediocerto.databinding.FragmentConfiguracoesBinding
 import com.example.remediocerto.ui.entrada.EntradaActivity
 import com.example.remediocerto.ui.main.MainActivity
+import com.example.remediocerto.ui.tutorial.TutorialActivity
 import com.example.remediocerto.util.ModoTema
 import com.example.remediocerto.util.PermissoesHelper
 import com.example.remediocerto.util.TamanhoFonte
@@ -89,6 +90,9 @@ class ConfiguracoesFragment : Fragment() {
         }
         binding.btnFarmacias.setOnClickListener {
             findNavController().navigate(R.id.action_configuracoes_to_farmacias)
+        }
+        binding.btnTutorial.setOnClickListener {
+            startActivity(Intent(requireContext(), TutorialActivity::class.java))
         }
         // Sair encerra a sessão: para voltar, é preciso entrar de novo com e-mail e senha.
         // Os dados continuam salvos na conta.
